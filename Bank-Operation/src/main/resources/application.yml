@@ -20,6 +20,7 @@ spring:
     port: 9042
     keyspace-name: bank_operation
     local-datacenter: datacenter1
+    schema-action: create_if_not_exists
 
   liquibase:
     change-log: classpath:/db/changelog/changelog-master.xml

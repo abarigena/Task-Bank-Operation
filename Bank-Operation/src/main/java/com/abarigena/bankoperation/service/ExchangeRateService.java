@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -17,13 +18,31 @@ public class ExchangeRateService {
 
     private static final Logger log = LoggerFactory.getLogger(ExchangeRateService.class);
 
-    public void saveExchangeRate(ExchangeRate rate) {
-        // Сохраняем курс в базу
+
+    public boolean saveExchangeRateIfNotExists(ExchangeRate rate) {
+        // Проверяем существование записи для данной валютной пары и даты
+        Optional<ExchangeRate> existingRate = exchangeRateRepository
+                .findByFromCurrencyAndToCurrencyAndDate(
+                        rate.getFromCurrency(),
+                        rate.getToCurrency(),
+                        rate.getDate()
+                );
+
+        if (existingRate.isPresent()) {
+            log.info("Курс для {} -> {} на дату {} уже существует",
+                    rate.getFromCurrency(),
+                    rate.getToCurrency(),
+                    rate.getDate());
+            return false;
+        }
+
+        // Если записи нет, сохраняем новую
         exchangeRateRepository.save(rate);
         log.info("Сохранен курс валют: валютная пара {} -> {}, курс: {}",
                 rate.getFromCurrency(),
                 rate.getToCurrency(),
                 rate.getClosePrice());
+        return true;
     }
 
     public BigDecimal getExchangeRate(String fromCurrency, String toCurrency, LocalDate date) {
@@ -31,24 +50,25 @@ public class ExchangeRateService {
                 fromCurrency, toCurrency, date);
 
         // Попытка найти курс по дате
-        return exchangeRateRepository
-                .findByFromCurrencyAndToCurrencyAndDate(fromCurrency, toCurrency, date)
-                .map(rate -> {
-                    // Если курс есть, используем его
-                    log.info("Найден курс для {} -> {}: {}",
-                            fromCurrency, toCurrency, rate.getClosePrice());
-                    return rate.getClosePrice();
-                })
-                .orElseGet(() -> {
-                    // Если курса нет, берем последний доступный курс
-                    ExchangeRate lastRate = exchangeRateRepository
-                            .findFirstByFromCurrencyAndToCurrencyOrderByDateDesc(fromCurrency, toCurrency)
-                            .orElseThrow(() -> new IllegalArgumentException("Курс не найден для данной валютной пары"));
+        Optional<ExchangeRate> rateOptional = exchangeRateRepository
+                .findByFromCurrencyAndToCurrencyAndDate(fromCurrency, toCurrency, date);
 
-                    // Используем предыдущую цену закрытия
-                    log.warn("Курс для {} -> {} не найден на указанную дату. Используем последний доступный курс: {}",
-                            fromCurrency, toCurrency, lastRate.getClosePrice());
-                    return lastRate.getClosePrice();
-                });
+        if (rateOptional.isPresent()) {
+            return rateOptional.get().getClosePrice();
+        }
+
+        // Если курса нет, берем последний доступный курс
+        Optional<ExchangeRate> latestRateOptional = exchangeRateRepository
+                .findLatestRateForCurrencyPair(fromCurrency, toCurrency);
+
+        if (latestRateOptional.isPresent()) {
+            log.warn("Курс для {} -> {} не найден на указанную дату. Используем последний доступный курс.",
+                    fromCurrency, toCurrency);
+            return latestRateOptional.get().getClosePrice();
+        }
+
+        // Если совсем нет курсов
+        log.error("Курс не найден для валютной пары {} -> {}", fromCurrency, toCurrency);
+        throw new IllegalArgumentException("Курс не найден для данной валютной пары");
     }
 }

@@ -1,6 +1,5 @@
 package com.abarigena.bankoperation.store.entity;
 
-import jakarta.persistence.Entity;
 import lombok.*;
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.*;
@@ -13,33 +12,24 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class ExchangeRate {
-    @PrimaryKeyColumn(name = "id", type = PrimaryKeyType.PARTITIONED)
-    private UUID id;
-
     @PrimaryKeyColumn(name = "from_currency", type = PrimaryKeyType.PARTITIONED)
     private String fromCurrency;
 
     @PrimaryKeyColumn(name = "to_currency", type = PrimaryKeyType.PARTITIONED)
     private String toCurrency;
 
-    @PrimaryKeyColumn(name = "date", type = PrimaryKeyType.CLUSTERED)
+    @PrimaryKeyColumn(name = "date", type = PrimaryKeyType.CLUSTERED, ordinal = 0)
     private LocalDate date;
+
+    @PrimaryKeyColumn(name = "id", type = PrimaryKeyType.CLUSTERED, ordinal = 1)
+    private UUID id;
 
     @Column("close_price")
     private BigDecimal closePrice;
 
     @Column("previous_close_price")
     private BigDecimal previousClosePrice;
-
-    public ExchangeRate(UUID id, String fromCurrency, String toCurrency, LocalDate date
-            , BigDecimal closePrice, BigDecimal previousClosePrice) {
-        this.id = id;
-        this.fromCurrency = fromCurrency;
-        this.toCurrency = toCurrency;
-        this.date = date;
-        this.closePrice = closePrice;
-        this.previousClosePrice = previousClosePrice;
-    }
 }
