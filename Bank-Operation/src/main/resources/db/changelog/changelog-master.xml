@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="create-transactions-table" author="expense-tracker">
+        <createTable tableName="transactions">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="account_from" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_to" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency_shortname" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sum" type="decimal(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sum_in_usd" type="decimal(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expense_category" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="datetime" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="limit_exceeded" type="boolean"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create-expense-limits-table" author="expense-tracker">
+        <createTable tableName="expense_limits">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="limit_sum" type="decimal(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="limit_datetime" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="limit_currency_shortname" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expense_category" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

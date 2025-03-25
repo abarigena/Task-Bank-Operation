@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: Bank-Operation
+
+  profiles:
+    active: dev
+  datasource:
+    username: postgres
+    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/bank_operation
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  cassandra:
+    contact-points: 127.0.0.1
+    port: 9042
+    keyspace-name: bank_operation
+    local-datacenter: datacenter1
+
+  liquibase:
+    change-log: classpath:/db/changelog/changelog-master.xml
+
+twelvedata:
+  api:
+    key: ${API_KEY}
+    base-url: https://api.twelvedata.com
+
+logging:
+  level:
+    org.springframework.web: INFO
+    com.expensetracker: DEBUG
