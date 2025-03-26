@@ -17,7 +17,6 @@ import reactor.core.publisher.Mono;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Component
@@ -25,17 +24,18 @@ import java.util.UUID;
 public class TwelveDataExchangeRateClient {
     private final WebClient webClient;
     private final ExchangeRateService exchangeRateService;
-    private final ExchangeRateRepository exchangeRateRepository;
 
     private static final Logger log = LoggerFactory.getLogger(TwelveDataExchangeRateClient.class);
 
     @Value("${twelvedata.api.key}")
     private String apiKey;
 
+    @Value("${app.exchange.currencies:EUR/USD,RUB/USD}")
+    private List<String> currencies;
+
     @Scheduled(cron = "0 0 8 * * MON-FRI")
     @PostConstruct
     public void updateExchangeRates() {
-        List<String> currencies = List.of("EUR/USD", "RUB/USD");
 
         log.info("Начало обновления курсов валют для {} пар", currencies.size());
 
@@ -59,7 +59,7 @@ public class TwelveDataExchangeRateClient {
         log.info("Завершено обновление курсов валют");
     }
 
-    private Mono<ExchangeRate> fetchExchangeRate(String fromCurrency, String toCurrency) {
+    Mono<ExchangeRate> fetchExchangeRate(String fromCurrency, String toCurrency) {
         log.debug("Запрос курса для {} -> {}", fromCurrency, toCurrency);
 
         return webClient.get()
