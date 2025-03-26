@@ -9,6 +9,7 @@ import org.hibernate.annotations.UuidGenerator;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.UUID;
 
 @Getter
@@ -35,7 +36,7 @@ public class Transaction {
     @NotBlank(message = "Валюта счета должна быть указана")
     private String currencyShortname;
 
-    @NotBlank(message = "Сумма транзакций должна быть указана")
+    @NotNull(message = "Сумма транзакций должна быть указана")
     @Positive(message = "Сумма транзакций должна быть положительной")
     private BigDecimal sum;
 
@@ -48,7 +49,8 @@ public class Transaction {
     private ExpenseCategory expenseCategory;
 
     @NotNull(message = "Время транзакции должно быть указано")
-    private LocalDateTime dateTime;
+    @Column(name = "datetime")
+    private ZonedDateTime dateTime;
 
     private Boolean limitExceeded;
 

@@ -54,4 +54,24 @@
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="alter-transactions-datetime-to-timestamptz" author="your-github-username">
+        <preConditions onFail="MARK_RAN">
+            <dbms type="postgresql"/>
+        </preConditions>
+        <comment>Изменение типа колонки datetime в transactions на TIMESTAMP WITH TIME ZONE</comment>
+        <modifyDataType tableName="transactions"
+                        columnName="datetime"
+                        newDataType="timestamp with time zone"/>
+    </changeSet>
+
+    <changeSet id="alter-limits-datetime-to-timestamptz" author="your-github-username">
+        <preConditions onFail="MARK_RAN">
+            <dbms type="postgresql"/>
+        </preConditions>
+        <comment>Изменение типа колонки limit_datetime в expense_limits на TIMESTAMP WITH TIME ZONE</comment>
+        <modifyDataType tableName="expense_limits"
+                        columnName="limit_datetime"
+                        newDataType="timestamp with time zone"/>
+    </changeSet>
 </databaseChangeLog>

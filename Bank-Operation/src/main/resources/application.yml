@@ -34,3 +34,5 @@ logging:
   level:
     org.springframework.web: INFO
     com.expensetracker: DEBUG
+server:
+  port: 8000

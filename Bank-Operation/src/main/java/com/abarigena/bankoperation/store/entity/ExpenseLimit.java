@@ -7,7 +7,7 @@ import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.UUID;
 
 @Getter
@@ -30,7 +30,8 @@ public class ExpenseLimit {
     private BigDecimal limitSum;
 
     @NotNull(message = "Время не должно быть пустым")
-    private LocalDateTime limitDateTime;
+    @Column(name = "limit_datetime")
+    private ZonedDateTime limitDateTime;
 
     @NotNull(message = "Сохращение валюты не должно быть пустым")
     private String limitCurrencyShortname;
