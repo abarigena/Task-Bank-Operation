@@ -33,6 +33,6 @@ twelvedata:
 logging:
   level:
     org.springframework.web: INFO
-    com.expensetracker: DEBUG
+    com.abarigena.bankoperation: DEBUG
 server:
   port: 8000

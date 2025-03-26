@@ -22,6 +22,6 @@ public interface ExpenseLimitRepository extends JpaRepository<ExpenseLimit, UUID
             "order by el.limitDateTime desc limit 1")
     Optional<ExpenseLimit> findLimitValidAtDateTime(
             @Param("category") Transaction.ExpenseCategory category,
-            @Param("datetime") ZonedDateTime datetime // Используем ZonedDateTime
+            @Param("datetime") ZonedDateTime datetime
     );
 }

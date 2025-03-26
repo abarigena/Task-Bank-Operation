@@ -36,7 +36,6 @@ public class TransactionDTO {
     @JsonProperty("expense_category")
     private Transaction.ExpenseCategory expenseCategory; // Enum из сущности
 
-    @NotNull(message = "Дата и время транзакции должны быть указаны")
     @JsonProperty("datetime")
     private ZonedDateTime dateTime;
 }

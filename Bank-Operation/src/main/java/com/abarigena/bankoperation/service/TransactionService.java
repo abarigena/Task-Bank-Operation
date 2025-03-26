@@ -48,9 +48,10 @@ public class TransactionService {
         log.debug("Начало обработки транзакции для счета {}", dto.getAccountFrom());
 
         Transaction transaction = mapDtoToEntity(dto);
+        LocalDate transactionDate = transaction.getDateTime().toLocalDate();
 
         // Рассчитываем сумму в USD
-        BigDecimal sumInUsd = convertToUsd(dto.getSum(), dto.getCurrencyShortname(), dto.getDateTime().toLocalDate());
+        BigDecimal sumInUsd = convertToUsd(dto.getSum(), dto.getCurrencyShortname(), transactionDate);
         transaction.setSumInUsd(sumInUsd);
         log.debug("Сумма в USD рассчитана: {}", sumInUsd);
 
@@ -59,8 +60,12 @@ public class TransactionService {
         log.debug("Действующий лимит на момент транзакции: {} USD", applicableLimit);
 
         // Рассчитываем траты за месяц до текущей транзакции
-        ZonedDateTime monthStart = transaction.getDateTime().with(TemporalAdjusters.firstDayOfMonth())
-                .with(LocalTime.MIN);
+        ZonedDateTime monthStart = transaction.getDateTime().with(TemporalAdjusters.firstDayOfMonth()).with(LocalTime.MIN);
+        ZonedDateTime currentTransactionTime = transaction.getDateTime();
+
+        log.debug("Расчет трат для категории {} за период с {} по {}",
+                transaction.getExpenseCategory(), monthStart, currentTransactionTime);
+
         // Берем начало текущего месяца и время начала транзакции dto.getDatetime()
         BigDecimal spentInMonthBeforeCurrent = transactionRepository.calculateSpendingInUsdForPeriod(
                 transaction.getExpenseCategory(),
@@ -93,7 +98,17 @@ public class TransactionService {
         transaction.setCurrencyShortname(dto.getCurrencyShortname());
         transaction.setSum(dto.getSum());
         transaction.setExpenseCategory(dto.getExpenseCategory());
-        transaction.setDateTime(dto.getDateTime());
+
+        ZonedDateTime transactionTime;
+        if (dto.getDateTime() != null) {
+            transactionTime = dto.getDateTime();
+            log.debug("Используем dateTime из DTO: {}", transactionTime);
+        } else {
+            transactionTime = ZonedDateTime.now();
+            log.debug("Поле dateTime в DTO не указано, используем текущее время: {}", transactionTime);
+        }
+        transaction.setDateTime(transactionTime);
+
         return transaction;
     }
 
