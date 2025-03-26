@@ -16,6 +16,7 @@ import java.util.Optional;
 public class ExchangeRateService {
     private final ExchangeRateRepository exchangeRateRepository;
 
+
     private static final Logger log = LoggerFactory.getLogger(ExchangeRateService.class);
 
 
@@ -68,7 +69,7 @@ public class ExchangeRateService {
         }
 
         // Если совсем нет курсов
-        log.error("Курс не найден для валютной пары {} -> {}", fromCurrency, toCurrency);
+        log.warn("Курс не найден для валютной пары {} -> {}", fromCurrency, toCurrency);
         throw new IllegalArgumentException("Курс не найден для данной валютной пары");
     }
 }

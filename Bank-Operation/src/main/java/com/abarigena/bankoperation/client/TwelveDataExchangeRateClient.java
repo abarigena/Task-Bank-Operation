@@ -3,6 +3,7 @@ package com.abarigena.bankoperation.client;
 import com.abarigena.bankoperation.dto.TwelveDataExchangeRateDTO;
 import com.abarigena.bankoperation.service.ExchangeRateService;
 import com.abarigena.bankoperation.store.entity.ExchangeRate;
+import com.abarigena.bankoperation.store.repository.ExchangeRateRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import reactor.core.publisher.Mono;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Component
@@ -23,6 +25,7 @@ import java.util.UUID;
 public class TwelveDataExchangeRateClient {
     private final WebClient webClient;
     private final ExchangeRateService exchangeRateService;
+    private final ExchangeRateRepository exchangeRateRepository;
 
     private static final Logger log = LoggerFactory.getLogger(TwelveDataExchangeRateClient.class);
 
@@ -43,7 +46,6 @@ public class TwelveDataExchangeRateClient {
             fetchExchangeRate(currencyPair[0], currencyPair[1])
                     .subscribe(
                             exchangeRate -> {
-                                // Проверяем и сохраняем только уникальные записи
                                 boolean saved = exchangeRateService.saveExchangeRateIfNotExists(exchangeRate);
                                 if (saved) {
                                     log.info("Новый курс сохранен для пары {}", pair);
@@ -72,27 +74,58 @@ public class TwelveDataExchangeRateClient {
                 .bodyToMono(TwelveDataExchangeRateDTO.class)
                 .flatMap(dto -> {
                     if (dto.getValues().isEmpty() || dto.getValues().get(0).getClose() == null) {
-                        // Если данных от API нет
-                        log.error("API вернуло пустые данные для курса валют: {} -> {}",
-                                fromCurrency, toCurrency);
-                        return Mono.error(new RuntimeException("Нет данных от API"));
+                        // Если данных от API нет, используем последний доступный курс
+                        try {
+                            BigDecimal lastClosePrice = exchangeRateService.getExchangeRate(
+                                    fromCurrency,
+                                    toCurrency,
+                                    LocalDate.now()
+                            );
+
+                            ExchangeRate fallbackRate = new ExchangeRate(
+                                    fromCurrency,
+                                    toCurrency,
+                                    LocalDate.now(),
+                                    UUID.randomUUID(),
+                                    lastClosePrice,
+                                    lastClosePrice
+                            );
+
+                            log.warn("API не вернуло данные. Использован последний доступный курс.");
+                            return Mono.just(fallbackRate);
+                        } catch (IllegalArgumentException ex) {
+                            log.error("Нет доступных данных о курсе для {} -> {}", fromCurrency, toCurrency);
+                            return Mono.empty();
+                        }
                     }
 
                     TwelveDataExchangeRateDTO.Value value = dto.getValues().get(0);
                     BigDecimal closePrice = new BigDecimal(value.getClose());
 
-                    // Для первого сохранения используем текущую цену и как предыдущую
+                    // Пытаемся получить предыдущий курс для previousClosePrice
+                    BigDecimal previousClosePrice;
+                    try {
+                        previousClosePrice = exchangeRateService.getExchangeRate(
+                                fromCurrency,
+                                toCurrency,
+                                LocalDate.now().minusDays(1)
+                        );
+                    } catch (IllegalArgumentException ex) {
+                        // Если нет предыдущего курса, используем текущий
+                        previousClosePrice = closePrice;
+                    }
+
                     ExchangeRate rate = new ExchangeRate(
                             fromCurrency,
                             toCurrency,
                             LocalDate.now(),
                             UUID.randomUUID(),
                             closePrice,
-                            closePrice // Используем текущую цену как предыдущую при первом сохранении
+                            previousClosePrice
                     );
 
-                    log.info("Получен курс для {} -> {}: закрытие={}",
-                            fromCurrency, toCurrency, rate.getClosePrice());
+                    log.info("Получен курс для {} -> {}: закрытие={}, предыдущее закрытие={}",
+                            fromCurrency, toCurrency, rate.getClosePrice(), rate.getPreviousClosePrice());
 
                     return Mono.just(rate);
                 })
