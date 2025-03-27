@@ -1,0 +1,39 @@
+name: Java CI with Maven and Jib
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build_and_test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Получение кода из репозитория
+      - name: Checkout code
+        uses: actions/checkout@v4 # Используем готовое действие для скачивания кода
+
+      # 2. Настройка JDK 21
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21' # Указываем нужную версию Java
+          distribution: 'temurin' # Используем дистрибутив Temurin (как и для Jib)
+
+      # 3. Кеширование зависимостей Maven
+      # Это ускоряет сборку, так как зависимости не будут скачиваться каждый раз
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository # Путь к локальному репозиторию Maven
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }} # Ключ кеша (зависит от ОС и pom.xml)
+          restore-keys: |
+            ${{ runner.os }}-maven- # Восстанавливать кеш, если точного совпадения нет
+
+      # 4. Сборка, тестирование и создание образа с помощью Maven и Jib
+      - name: Build, Test, and Build Docker image with Maven
+        run: mvn clean package -B # '-B' для пакетного режима (меньше логов)
