@@ -1,5 +1,6 @@
 package com.abarigena.bankoperation.store.repository;
 
+import com.abarigena.bankoperation.dto.LimitExceededTransactionDTO;
 import com.abarigena.bankoperation.store.entity.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,9 +13,6 @@ import java.util.UUID;
 
 public interface TransactionRepository extends JpaRepository<Transaction, UUID> {
 
-    // Поиск транзакций, где превышен лимит расходов
-    List<Transaction> findByLimitExceededTrue();
-
     // Расчет суммы расходов в USD за период для категории
     @Query("SELECT COALESCE(SUM(t.sumInUsd), 0) " +
             "FROM Transaction t " +
@@ -26,14 +24,25 @@ public interface TransactionRepository extends JpaRepository<Transaction, UUID> 
             @Param("periodEnd") ZonedDateTime periodEnd
     );
 
-    /*// Методы поиска транзакций по категории и периоду времени
-    List<Transaction> findByExpenseCategoryAndDateTimeBetween(
-            Transaction.ExpenseCategory expenseCategory,
-            LocalDateTime start,
-            LocalDateTime end
-    );
-
-    // Расчет общих расходов по категориям в USD
-    @Query("select t.expenseCategory, SUM(t.sumInUsd) from Transaction t group by t.expenseCategory")
-    List<Object[]> calculateTotalSpendingInUsdByCategory();*/
+    /**
+     * Находит все транзакции, у которых limitExceeded = true,
+     * и для каждой из них подбирает самый последний лимит, установленный
+     * не позже времени самой транзакции.
+     * Результат сразу маппится в LimitExceededTransactionDTO.
+     */
+    @Query("SELECT new com.abarigena.bankoperation.dto.LimitExceededTransactionDTO(" +
+            "t.id, t.accountFrom, t.accountTo, t.currencyShortname, t.sum, t.sumInUsd, t.expenseCategory, t.dateTime, " +
+            "el.limitSum, el.limitDateTime, el.limitCurrencyShortname) " +
+            "FROM Transaction t " +
+            // Присоединяем лимиты (el), которые подходят по категории и установлены не позже транзакции (t.dateTime)
+            "LEFT JOIN ExpenseLimit el ON t.expenseCategory = el.expenseCategory AND el.limitDateTime <= t.dateTime " +
+            "WHERE t.limitExceeded = true " +
+            "AND NOT EXISTS (" +
+            "  SELECT el2 FROM ExpenseLimit el2 " +
+            "  WHERE el2.expenseCategory = el.expenseCategory " +
+            "  AND el2.limitDateTime <= t.dateTime " +
+            "  AND el2.limitDateTime > el.limitDateTime" +
+            ") " +
+            "ORDER BY t.dateTime DESC")
+    List<LimitExceededTransactionDTO> findExceededTransactionsWithLimitDetails();
 }

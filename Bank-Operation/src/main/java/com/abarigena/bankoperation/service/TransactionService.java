@@ -1,5 +1,6 @@
 package com.abarigena.bankoperation.service;
 
+import com.abarigena.bankoperation.dto.LimitExceededTransactionDTO;
 import com.abarigena.bankoperation.dto.TransactionDTO;
 import com.abarigena.bankoperation.store.entity.ExpenseLimit;
 import com.abarigena.bankoperation.store.entity.Transaction;
@@ -17,6 +18,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZonedDateTime;
 import java.time.temporal.TemporalAdjusters;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -80,7 +82,6 @@ public class TransactionService {
         transaction.setLimitExceeded(limitExceeded);
         log.debug("Общие траты с учетом текущей: {} USD. Лимит превышен: {}", totalSpendingIncludingCurrent, limitExceeded);
 
-        // 6. Сохраняем транзакцию
         Transaction savedTransaction = transactionRepository.save(transaction);
         log.info("Транзакция {} сохранена с флагом limitExceeded={}", savedTransaction.getId(), limitExceeded);
 
@@ -156,5 +157,19 @@ public class TransactionService {
         return limitOptional
                 .map(ExpenseLimit::getLimitSum) // Если лимит найден, берем его сумму
                 .orElse(DEFAULT_MONTHLY_LIMIT_USD); // Иначе используем дефолтное значение
+    }
+
+    /**
+     * Получает список транзакций, превысивших свой лимит расходов,
+     * вместе с деталями лимита, который был превышен.
+     *
+     * @return Список LimitExceededTransactionDTO
+     */
+    @Transactional(readOnly = true)
+    public List<LimitExceededTransactionDTO> getExceededTransactionsWithLimitDetails(){
+        log.info("Запрос транзакций, превысивших лимиты, с деталями их лимитов.");
+        List<LimitExceededTransactionDTO> exceededTransactions = transactionRepository.findExceededTransactionsWithLimitDetails();
+        log.info("Найдено {} транзакций, превысивших лимиты.", exceededTransactions.size());
+        return exceededTransactions;
     }
 }
