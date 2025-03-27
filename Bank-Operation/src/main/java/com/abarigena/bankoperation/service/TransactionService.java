@@ -2,6 +2,7 @@ package com.abarigena.bankoperation.service;
 
 import com.abarigena.bankoperation.dto.LimitExceededTransactionDTO;
 import com.abarigena.bankoperation.dto.TransactionDTO;
+import com.abarigena.bankoperation.mapper.TransactionMapper;
 import com.abarigena.bankoperation.store.entity.ExpenseLimit;
 import com.abarigena.bankoperation.store.entity.Transaction;
 import com.abarigena.bankoperation.store.repository.ExpenseLimitRepository;
@@ -38,9 +39,12 @@ public class TransactionService {
     // Масштаб и округление для операций с USD
     private static final int USD_SCALE = 2;
     private static final RoundingMode USD_ROUNDING_MODE = RoundingMode.HALF_UP;
+    private final TransactionMapper transactionMapper;
 
     /**
      * Обрабатывает входящую транзакцию: конвертирует в USD, проверяет лимит и сохраняет.
+     * Использует TransactionMapper для преобразования DTO в сущность.
+     *
      * @param dto Данные транзакции из запроса.
      * @return Сохраненная сущность транзакции.
      * @throws IllegalArgumentException если не найден курс валют.
@@ -49,7 +53,9 @@ public class TransactionService {
     public Transaction processAndSaveTransaction(TransactionDTO dto) {
         log.debug("Начало обработки транзакции для счета {}", dto.getAccountFrom());
 
-        Transaction transaction = mapDtoToEntity(dto);
+        Transaction transaction = transactionMapper.toEntity(dto);
+        log.debug("Транзакция DTO смаплена в сущность: {}", transaction);
+
         LocalDate transactionDate = transaction.getDateTime().toLocalDate();
 
         // Рассчитываем сумму в USD
@@ -87,30 +93,6 @@ public class TransactionService {
 
         return savedTransaction;
 
-    }
-
-    /**
-     * Вспомогательный метод для маппинга DTO на сущность.
-     */
-    private Transaction mapDtoToEntity(TransactionDTO dto) {
-        Transaction transaction = new Transaction();
-        transaction.setAccountFrom(dto.getAccountFrom());
-        transaction.setAccountTo(dto.getAccountTo());
-        transaction.setCurrencyShortname(dto.getCurrencyShortname());
-        transaction.setSum(dto.getSum());
-        transaction.setExpenseCategory(dto.getExpenseCategory());
-
-        ZonedDateTime transactionTime;
-        if (dto.getDateTime() != null) {
-            transactionTime = dto.getDateTime();
-            log.debug("Используем dateTime из DTO: {}", transactionTime);
-        } else {
-            transactionTime = ZonedDateTime.now();
-            log.debug("Поле dateTime в DTO не указано, используем текущее время: {}", transactionTime);
-        }
-        transaction.setDateTime(transactionTime);
-
-        return transaction;
     }
 
     /**

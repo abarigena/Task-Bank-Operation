@@ -11,9 +11,21 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Репозиторий для управления сущностями Транзакций (Transaction).
+ */
 public interface TransactionRepository extends JpaRepository<Transaction, UUID> {
 
-    // Расчет суммы расходов в USD за период для категории
+    /**
+     * Рассчитывает общую сумму расходов (в USD) для указанной категории
+     * за определенный период времени (включая начальную дату, исключая конечную).
+     * Если транзакций за период нет, возвращает 0.
+     *
+     * @param expenseCategory Категория расходов (PRODUCT или SERVICE).
+     * @param periodStart     Начало периода (включительно).
+     * @param periodEnd       Конец периода (исключительно).
+     * @return Сумма расходов в USD за период, или 0, если транзакций не было.
+     */
     @Query("SELECT COALESCE(SUM(t.sumInUsd), 0) " +
             "FROM Transaction t " +
             "WHERE t.expenseCategory = :category " +
@@ -25,10 +37,14 @@ public interface TransactionRepository extends JpaRepository<Transaction, UUID> 
     );
 
     /**
-     * Находит все транзакции, у которых limitExceeded = true,
-     * и для каждой из них подбирает самый последний лимит, установленный
-     * не позже времени самой транзакции.
-     * Результат сразу маппится в LimitExceededTransactionDTO.
+     * Находит все транзакции, у которых флаг limitExceeded установлен в true.
+     * Для каждой такой транзакции подбирает самый последний лимит (ExpenseLimit),
+     * который был установлен для её категории расходов НЕ ПОЗЖЕ времени самой транзакции.
+     * Результат сразу маппится в список объектов LimitExceededTransactionDTO,
+     * содержащих как детали транзакции, так и детали превышенного лимита.
+     *
+     * @return Список DTO с транзакциями, превысившими лимит, и информацией о лимите.
+     *         Список отсортирован по времени транзакции в порядке убывания (сначала самые новые).
      */
     @Query("SELECT new com.abarigena.bankoperation.dto.LimitExceededTransactionDTO(" +
             "t.id, t.accountFrom, t.accountTo, t.currencyShortname, t.sum, t.sumInUsd, t.expenseCategory, t.dateTime, " +

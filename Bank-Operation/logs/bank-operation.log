@@ -1,0 +1,74 @@
+2025-03-27 13:12:39.081 [main] INFO  c.a.b.BankOperationApplication - Starting BankOperationApplication using Java 21.0.1 with PID 5432 (E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation\target\classes started by danil in E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation)
+2025-03-27 13:12:39.082 [main] DEBUG c.a.b.BankOperationApplication - Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-03-27 13:12:39.083 [main] INFO  c.a.b.BankOperationApplication - The following 1 profile is active: "dev"
+2025-03-27 13:12:39.937 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-27 13:12:39.940 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Reactive Cassandra repositories in DEFAULT mode.
+2025-03-27 13:12:40.098 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExpenseLimitRepository; If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository
+2025-03-27 13:12:40.100 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.TransactionRepository; If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository
+2025-03-27 13:12:40.101 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 154 ms. Found 0 Reactive Cassandra repository interfaces.
+2025-03-27 13:12:40.109 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-27 13:12:40.109 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Cassandra repositories in DEFAULT mode.
+2025-03-27 13:12:40.115 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExpenseLimitRepository; If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository
+2025-03-27 13:12:40.115 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.TransactionRepository; If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository
+2025-03-27 13:12:40.135 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 1 Cassandra repository interface.
+2025-03-27 13:12:40.148 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-27 13:12:40.149 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-27 13:12:40.162 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExchangeRateRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2025-03-27 13:12:40.176 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 20 ms. Found 2 JPA repository interfaces.
+2025-03-27 13:12:40.749 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8000 (http)
+2025-03-27 13:12:40.763 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8000"]
+2025-03-27 13:12:40.765 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-03-27 13:12:40.765 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-03-27 13:12:40.839 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-03-27 13:12:40.840 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1703 ms
+2025-03-27 13:12:40.990 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-03-27 13:12:41.202 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3a6e9856
+2025-03-27 13:12:41.204 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-03-27 13:12:41.373 [main] INFO  liquibase.database - Set default schema name to public
+2025-03-27 13:12:41.829 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2025-03-27 13:12:41.879 [main] INFO  liquibase.ui - Database is up to date, no changesets to execute
+2025-03-27 13:12:41.882 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2025-03-27 13:12:41.894 [main] INFO  liquibase.util - UPDATE SUMMARY
+2025-03-27 13:12:41.894 [main] INFO  liquibase.util - Run:                          0
+2025-03-27 13:12:41.894 [main] INFO  liquibase.util - Previously run:               4
+2025-03-27 13:12:41.894 [main] INFO  liquibase.util - Filtered out:                 0
+2025-03-27 13:12:41.895 [main] INFO  liquibase.util - -------------------------------
+2025-03-27 13:12:41.895 [main] INFO  liquibase.util - Total change sets:            4
+2025-03-27 13:12:41.895 [main] INFO  liquibase.util - Update summary generated
+2025-03-27 13:12:41.898 [main] INFO  liquibase.command - Command execution complete
+2025-03-27 13:12:42.390 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-27 13:12:42.441 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-27 13:12:43.369 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-27 13:12:43.585 [main] INFO  c.d.o.d.i.c.DefaultMavenCoordinates - Apache Cassandra Java Driver (org.apache.cassandra:java-driver-core) version 4.18.1
+2025-03-27 13:12:44.106 [main] INFO  c.d.o.d.i.c.c.CqlPrepareAsyncProcessor - Adding handler to invalidate cached prepared statements on type changes
+2025-03-27 13:12:44.402 [s0-admin-0] INFO  c.d.o.d.internal.core.time.Clock - Using native clock for microsecond precision
+2025-03-27 13:12:44.957 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Начало обновления курсов валют для 2 пар
+2025-03-27 13:12:44.958 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: EUR/USD
+2025-03-27 13:12:44.958 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-27 13:12:45.252 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: RUB/USD
+2025-03-27 13:12:45.252 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для RUB -> USD
+2025-03-27 13:12:45.253 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Завершено обновление курсов валют
+2025-03-27 13:12:45.430 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-27 13:12:46.213 [reactor-http-nio-3] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары RUB -> USD на дату 2025-03-26
+2025-03-27 13:12:46.213 [reactor-http-nio-2] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-26
+2025-03-27 13:12:46.287 [reactor-http-nio-2] INFO  c.a.b.c.TwelveDataExchangeRateClient - Получен курс для EUR -> USD: закрытие=1.07616, предыдущее закрытие=1.078488
+2025-03-27 13:12:46.287 [reactor-http-nio-3] INFO  c.a.b.c.TwelveDataExchangeRateClient - Получен курс для RUB -> USD: закрытие=0.011941350, предыдущее закрытие=0.011816680
+2025-03-27 13:12:46.297 [reactor-http-nio-2] INFO  c.a.b.service.ExchangeRateService - Курс для EUR -> USD на дату 2025-03-27 уже существует
+2025-03-27 13:12:46.297 [reactor-http-nio-3] INFO  c.a.b.service.ExchangeRateService - Курс для RUB -> USD на дату 2025-03-27 уже существует
+2025-03-27 13:12:46.975 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-27 13:12:47.306 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8000"]
+2025-03-27 13:12:47.317 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8000 (http) with context path '/'
+2025-03-27 13:12:47.331 [main] INFO  c.a.b.BankOperationApplication - Started BankOperationApplication in 8.938 seconds (process running for 9.928)
+2025-03-27 13:12:58.902 [http-nio-8000-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-27 13:12:58.902 [http-nio-8000-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-03-27 13:12:58.903 [http-nio-8000-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-03-27 13:12:58.984 [http-nio-8000-exec-2] INFO  c.a.b.controller.LimitController - Получен запрос на установку нового лимита: LimitDTO(limitSum=2000.00, expenseCategory=SERVICE)
+2025-03-27 13:12:58.991 [http-nio-8000-exec-2] DEBUG c.a.b.service.LimitService - Установка нового лимита 2000.00 для категории SERVICE
+2025-03-27 13:12:58.991 [http-nio-8000-exec-2] DEBUG c.a.b.service.LimitService - DTO лимита смаплен в сущность: ExpenseLimit(id=null, limitSum=2000.00, limitDateTime=2025-03-27T13:12:58.991979700+05:00[Asia/Yekaterinburg], limitCurrencyShortname=USD, expenseCategory=SERVICE)
+2025-03-27 13:12:59.015 [http-nio-8000-exec-2] INFO  c.a.b.service.LimitService - Новый лимит 2000.00 для категории SERVICE сохранен с ID 122002ad-e58e-493c-9d0a-762ee14c3267
+2025-03-27 13:12:59.047 [http-nio-8000-exec-2] INFO  c.a.b.controller.LimitController - Новый лимит успешно установлен: 122002ad-e58e-493c-9d0a-762ee14c3267
+2025-03-27 13:13:06.309 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-27 13:13:06.323 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-03-27 13:13:10.441 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-27 13:13:10.443 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-03-27 13:13:10.448 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
