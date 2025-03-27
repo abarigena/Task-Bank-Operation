@@ -1,0 +1,101 @@
+version: '3.8'
+
+services:
+  postgres-db:
+    image: postgres:latest
+    container_name: bank-op-postgres
+    environment:
+      POSTGRES_DB: bank_operation
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - bank-net
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d bank_operation"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+  cassandra-db:
+    image: cassandra:4.1
+    container_name: bank-op-cassandra
+    environment:
+      CASSANDRA_DC: datacenter1
+      CASSANDRA_RACK: rack1
+    ports:
+      - "9042:9042"
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+    networks:
+      - bank-net
+
+    healthcheck:
+      test: ["CMD-SHELL", "cqlsh -e 'describe keyspaces'"] # Пытаемся выполнить простую команду cqlsh
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 40s
+
+  cassandra-init:
+    image: cassandra:4.1
+    container_name: bank-op-cassandra-init
+    depends_on:
+      cassandra-db:
+        condition: service_healthy # Ждем, пока основная нода Cassandra не пройдет healthcheck
+    volumes:
+      - ./init-cassandra.cql:/init-cassandra.cql
+    networks:
+      - bank-net
+    # Команда для выполнения скрипта с помощью cqlsh
+    # Используем цикл while для ожидания доступности порта 9042 на cassandra-db
+    command: >
+      /bin/bash -c "
+        echo 'Waiting for Cassandra to be fully ready...';
+        while ! cqlsh cassandra-db 9042 -e 'describe keyspaces' --connect-timeout=5; do
+          echo 'Cassandra not ready yet, retrying...';
+          sleep 5;
+        done;
+        echo 'Cassandra is ready. Executing init script...';
+        cqlsh cassandra-db 9042 -f /init-cassandra.cql;
+        echo 'Cassandra init script executed.';
+      "
+
+  bank-operation-app:
+    image: bank-operation-app:latest
+    container_name: bank-op-app
+    depends_on:
+      postgres-db:
+        condition: service_healthy # Ждем, пока healthcheck PostgreSQL не станет успешным
+      cassandra-db:
+        condition: service_healthy # Ждем, пока healthcheck Cassandra не станет успешным
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/bank_operation
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      SPRING_CASSANDRA_CONTACTPOINTS: cassandra-db
+      SPRING_CASSANDRA_PORT: 9042
+      SPRING_CASSANDRA_LOCALDATACENTER: datacenter1
+      SPRING_CASSANDRA_KEYSPACENAME: bank_operation
+      SPRING_PROFILES_ACTIVE: docker
+      TWELVEDATA_API_KEY: ${API_KEY}
+      SPRING_CASSANDRA_SCHEMA_ACTION: create_if_not_exists
+    ports:
+      - "8000:8000"
+    networks:
+      - bank-net
+
+networks:
+  bank-net:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
+  cassandra_data:
+    driver: local
