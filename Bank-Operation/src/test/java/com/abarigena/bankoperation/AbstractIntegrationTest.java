@@ -48,12 +48,13 @@ public abstract class AbstractIntegrationTest {
         registry.add("spring.datasource.password", postgresContainer::getPassword);
 
         // Переопределяем свойства для Cassandra
-        // Важно: getContactPoint() возвращает InetSocketAddress
         registry.add("spring.cassandra.contact-points", () -> cassandraContainer.getHost()); // Получаем хост контейнера
-        registry.add("spring.cassandra.port", () -> cassandraContainer.getMappedPort(9042)); // Получаем реальный порт Cassandra
+        registry.add("spring.cassandra.port", () -> cassandraContainer.getMappedPort(9042));
         registry.add("spring.cassandra.local-datacenter", () -> "datacenter1"); // Должен совпадать с Cassandra
-        registry.add("spring.cassandra.keyspace-name", () -> "bank_operation_test"); // Используем ОТДЕЛЬНЫЙ keyspace для тестов!
+        registry.add("spring.cassandra.keyspace-name", () -> "bank_operation_test"); // Используем отдельный keyspace для тестов!
         registry.add("spring.cassandra.schema-action", () -> "create_if_not_exists"); // Позволяем Spring создавать таблицы
+
+        registry.add("twelvedata.api.key", () -> "test-api-key"); // Предоставляем фиктивное значение
     }
 
     @BeforeAll
