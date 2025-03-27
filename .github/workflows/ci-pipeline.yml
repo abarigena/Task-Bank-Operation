@@ -1,4 +1,6 @@
+
 name: Java CI with Maven and Jib
+
 
 on:
   push:
@@ -6,10 +8,9 @@ on:
   pull_request:
     branches: [ main ]
 
+
 jobs:
-
   build_and_test:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -31,9 +32,11 @@ jobs:
         with:
           path: ~/.m2/repository # Путь к локальному репозиторию Maven
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }} # Ключ кеша (зависит от ОС и pom.xml)
+          # Ключи для восстановления кеша, если точный ключ 'key' не найден
           restore-keys: |
-            ${{ runner.os }}-maven- # Восстанавливать кеш, если точного совпадения нет
+            ${{ runner.os }}-maven-
 
       # 4. Сборка, тестирование и создание образа с помощью Maven и Jib
+      # Запускаем 'mvn package', который выполнит все фазы до 'package', включая 'test' и плагин Jib
       - name: Build, Test, and Build Docker image with Maven
-        run: mvn clean package -B # '-B' для пакетного режима (меньше логов)
+        run: mvn clean package -B -f Bank-Operation/pom.xml
