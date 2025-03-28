@@ -34,7 +34,7 @@ public class TwelveDataExchangeRateClient {
     @Value("${app.exchange.currencies:EUR/USD,RUB/USD}")
     private List<String> currencies;
 
-    @Scheduled(cron = "0 0 8 * * MON-FRI")
+    @Scheduled(cron = "0 0 8 * * MON-SUN")
     @PostConstruct
     public void updateExchangeRates() {
 
@@ -113,7 +113,7 @@ public class TwelveDataExchangeRateClient {
                     // Добавим проверку на null и для самого close
                     if (value.getClose() == null) {
                         log.error("API Twelve Data вернуло запись, но поле 'close' равно null для {} -> {}. Обработка невозможна.", fromCurrency, toCurrency);
-                        return Mono.empty(); // Или можно попытаться использовать fallback здесь тоже
+                        return Mono.empty(); // можно попытаться использовать fallback здесь тоже
                     }
                     BigDecimal closePrice = new BigDecimal(value.getClose());
 
