@@ -36,3 +36,7 @@ logging:
     com.abarigena.bankoperation: DEBUG
 server:
   port: 8000
+
+app:
+  exchange:
+    currencies: EUR/USD,RUB/USD,KZT/RUB

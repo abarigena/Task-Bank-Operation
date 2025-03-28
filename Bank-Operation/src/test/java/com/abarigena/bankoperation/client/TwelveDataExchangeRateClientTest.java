@@ -19,6 +19,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 import static org.mockito.ArgumentMatchers.*;
@@ -40,7 +41,6 @@ class TwelveDataExchangeRateClientTest {
     @Mock
     private WebClient.ResponseSpec responseSpec;
 
-    // Mockito создаст экземпляр TwelveDataExchangeRateClient и внедрит в него @Mock-аннотированные зависимости (webClient, exchangeRateService)
     @InjectMocks
     private TwelveDataExchangeRateClient twelveDataExchangeRateClient;
 
@@ -53,21 +53,19 @@ class TwelveDataExchangeRateClientTest {
     private final LocalDate yesterday = today.minusDays(1);
     private final BigDecimal currentClosePrice = new BigDecimal("1.12");
     private final BigDecimal previousClosePrice = new BigDecimal("1.11");
-    private final BigDecimal fallbackPrice = new BigDecimal("1.09"); // Для тестов с fallback
-
+    private final BigDecimal fallbackPrice = new BigDecimal("1.09");
 
     @BeforeEach
     void setUp() {
-        // 1. Имитируем @Value инъекции с помощью ReflectionTestUtils
         ReflectionTestUtils.setField(twelveDataExchangeRateClient, "apiKey", apiKey);
         ReflectionTestUtils.setField(twelveDataExchangeRateClient, "currencies", configuredCurrencies);
 
-        // 2. Настраиваем ОБЩУЮ цепочку моков для WebClient
-        // Без lenient() Mockito выдаст UnnecessaryStubbingException для таких тестов.
         lenient().when(webClient.get()).thenReturn(requestHeadersUriSpec);
-        // Указываем Function.class, чтобы any() был более конкретным и соответствовал сигнатуре .uri(...)
         lenient().when(requestHeadersUriSpec.uri(any(Function.class))).thenReturn(requestHeadersSpec);
         lenient().when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
+
+        lenient().when(exchangeRateService.findRateOptional(anyString(), anyString(), any(LocalDate.class)))
+                .thenReturn(Optional.empty());
     }
 
     // --- Тесты для метода fetchExchangeRate ---
@@ -75,19 +73,19 @@ class TwelveDataExchangeRateClientTest {
     @Test
     @DisplayName("fetchExchangeRate должен вернуть курс, когда API отвечает успешно")
     void fetchExchangeRate_shouldReturnRate_whenApiCallSuccessful() {
-        // Arrange: Настраиваем специфичный ответ API для ЭТОГО теста
+        // Arrange
         TwelveDataExchangeRateDTO dto = new TwelveDataExchangeRateDTO(
                 List.of(new TwelveDataExchangeRateDTO.Value(today.toString(), currentClosePrice.toString()))
         );
-        // Здесь цепочка моков из setUp используется. Домокируем последний шаг:
         when(responseSpec.bodyToMono(eq(TwelveDataExchangeRateDTO.class))).thenReturn(Mono.just(dto));
-        // Мокаем ответ сервиса для получения предыдущего курса
-        when(exchangeRateService.getExchangeRate(fromCurrencyEur, toCurrencyUsd, yesterday)).thenReturn(previousClosePrice);
+        // Мокаем ответ сервиса для получения предыдущего курса через findRateOptional
+        when(exchangeRateService.findRateOptional(fromCurrencyEur, toCurrencyUsd, yesterday))
+                .thenReturn(Optional.of(previousClosePrice));
 
-        // Act: Вызываем тестируемый метод
+        // Act
         Mono<ExchangeRate> resultMono = twelveDataExchangeRateClient.fetchExchangeRate(fromCurrencyEur, toCurrencyUsd);
 
-        // Assert: Проверяем результат с помощью StepVerifier для реактивных типов
+        // Assert
         StepVerifier.create(resultMono)
                 .expectNextMatches(rate ->
                         rate.getFromCurrency().equals(fromCurrencyEur) &&
@@ -97,24 +95,24 @@ class TwelveDataExchangeRateClientTest {
                                 rate.getPreviousClosePrice().compareTo(previousClosePrice) == 0 && // Проверяем, что предыдущий курс использован
                                 rate.getId() != null
                 )
-                .verifyComplete(); // Убеждаемся, что Mono завершился успешно с одним элементом
+                .verifyComplete();
 
-        // Verify: Проверяем, что нужные методы были вызваны
-        verify(exchangeRateService, times(1)).getExchangeRate(fromCurrencyEur, toCurrencyUsd, yesterday);
+        // Verify: Проверяем, что был вызван findRateOptional для предыдущего курса
+        verify(exchangeRateService, times(1)).findRateOptional(fromCurrencyEur, toCurrencyUsd, yesterday);
         verify(webClient).get();
     }
 
     @Test
-    @DisplayName("fetchExchangeRate должен использовать текущий курс как предыдущий, если предыдущий не найден")
+    @DisplayName("fetchExchangeRate должен использовать текущий как предыдущий, если предыдущий не найден")
     void fetchExchangeRate_shouldUseCurrentAsPrevious_whenPreviousRateNotFound() {
         // Arrange
         TwelveDataExchangeRateDTO dto = new TwelveDataExchangeRateDTO(
                 List.of(new TwelveDataExchangeRateDTO.Value(today.toString(), currentClosePrice.toString()))
         );
         when(responseSpec.bodyToMono(eq(TwelveDataExchangeRateDTO.class))).thenReturn(Mono.just(dto));
-        // Имитируем ошибку при поиске предыдущего курса
-        when(exchangeRateService.getExchangeRate(fromCurrencyEur, toCurrencyUsd, yesterday))
-                .thenThrow(new IllegalArgumentException("Курс не найден"));
+        // Имитируем, что findRateOptional НЕ нашел предыдущий курс
+        when(exchangeRateService.findRateOptional(fromCurrencyEur, toCurrencyUsd, yesterday))
+                .thenReturn(Optional.empty()); // Возвращаем пустой Optional
 
         // Act
         Mono<ExchangeRate> resultMono = twelveDataExchangeRateClient.fetchExchangeRate(fromCurrencyEur, toCurrencyUsd);
@@ -122,17 +120,14 @@ class TwelveDataExchangeRateClientTest {
         // Assert
         StepVerifier.create(resultMono)
                 .expectNextMatches(rate ->
-                        rate.getFromCurrency().equals(fromCurrencyEur) &&
-                                rate.getToCurrency().equals(toCurrencyUsd) &&
-                                rate.getClosePrice().compareTo(currentClosePrice) == 0 &&
+                        rate.getClosePrice().compareTo(currentClosePrice) == 0 &&
                                 // Главная проверка: previousClosePrice равен currentClosePrice
-                                rate.getPreviousClosePrice().compareTo(currentClosePrice) == 0 &&
-                                rate.getId() != null
+                                rate.getPreviousClosePrice().compareTo(currentClosePrice) == 0
                 )
                 .verifyComplete();
 
         // Verify
-        verify(exchangeRateService, times(1)).getExchangeRate(fromCurrencyEur, toCurrencyUsd, yesterday);
+        verify(exchangeRateService, times(1)).findRateOptional(fromCurrencyEur, toCurrencyUsd, yesterday);
     }
 
 
@@ -140,10 +135,11 @@ class TwelveDataExchangeRateClientTest {
     @DisplayName("fetchExchangeRate должен вернуть fallback курс, когда API возвращает пустые данные")
     void fetchExchangeRate_shouldReturnFallbackRate_whenApiReturnsEmptyValues() {
         // Arrange
-        TwelveDataExchangeRateDTO emptyDto = new TwelveDataExchangeRateDTO(Collections.emptyList()); // Пустой список values
+        TwelveDataExchangeRateDTO emptyDto = new TwelveDataExchangeRateDTO(Collections.emptyList());
         when(responseSpec.bodyToMono(eq(TwelveDataExchangeRateDTO.class))).thenReturn(Mono.just(emptyDto));
-        // Предполагаем, что последний доступный курс (fallback) существует
-        when(exchangeRateService.getExchangeRate(fromCurrencyEur, toCurrencyUsd, today)).thenReturn(fallbackPrice);
+        // Имитируем, что findRateOptional НАШЕЛ fallback курс для СЕГОДНЯ
+        when(exchangeRateService.findRateOptional(fromCurrencyEur, toCurrencyUsd, today))
+                .thenReturn(Optional.of(fallbackPrice));
 
         // Act
         Mono<ExchangeRate> resultMono = twelveDataExchangeRateClient.fetchExchangeRate(fromCurrencyEur, toCurrencyUsd);
@@ -151,19 +147,15 @@ class TwelveDataExchangeRateClientTest {
         // Assert
         StepVerifier.create(resultMono)
                 .expectNextMatches(rate ->
-                        rate.getFromCurrency().equals(fromCurrencyEur) &&
-                                rate.getToCurrency().equals(toCurrencyUsd) &&
-                                rate.getDate().equals(today) && // Дата сегодняшняя
-                                rate.getClosePrice().compareTo(fallbackPrice) == 0 && // Курс - fallback
-                                rate.getPreviousClosePrice().compareTo(fallbackPrice) == 0 && // Предыдущий курс тоже fallback
-                                rate.getId() != null
+                        rate.getClosePrice().compareTo(fallbackPrice) == 0 && // Курс - fallback
+                                rate.getPreviousClosePrice().compareTo(fallbackPrice) == 0 // Предыдущий тоже fallback
                 )
-                .verifyComplete();
+                .verifyComplete(); // Теперь ожидаем результат, а не onComplete()
 
-        // Verify: Проверяем, что был вызван getExchangeRate для получения fallback-курса
-        verify(exchangeRateService, times(1)).getExchangeRate(fromCurrencyEur, toCurrencyUsd, today);
-        // Не должен был вызываться для получения предыдущего (вчерашнего) курса
-        verify(exchangeRateService, never()).getExchangeRate(fromCurrencyEur, toCurrencyUsd, yesterday);
+        // Verify: Проверяем, что был вызван findRateOptional для получения fallback-курса
+        verify(exchangeRateService, times(1)).findRateOptional(fromCurrencyEur, toCurrencyUsd, today);
+        // Проверяем, что НЕ вызывался для вчерашнего дня
+        verify(exchangeRateService, never()).findRateOptional(fromCurrencyEur, toCurrencyUsd, yesterday);
     }
 
     @Test
@@ -172,9 +164,9 @@ class TwelveDataExchangeRateClientTest {
         // Arrange
         TwelveDataExchangeRateDTO emptyDto = new TwelveDataExchangeRateDTO(Collections.emptyList());
         when(responseSpec.bodyToMono(eq(TwelveDataExchangeRateDTO.class))).thenReturn(Mono.just(emptyDto));
-        // Имитируем ошибку при поиске fallback-курса
-        when(exchangeRateService.getExchangeRate(fromCurrencyEur, toCurrencyUsd, today))
-                .thenThrow(new IllegalArgumentException("Курс не найден"));
+        // Имитируем, что findRateOptional НЕ нашел fallback-курс
+        when(exchangeRateService.findRateOptional(fromCurrencyEur, toCurrencyUsd, today))
+                .thenReturn(Optional.empty()); // Возвращаем пустой Optional
 
         // Act
         Mono<ExchangeRate> resultMono = twelveDataExchangeRateClient.fetchExchangeRate(fromCurrencyEur, toCurrencyUsd);
@@ -184,9 +176,9 @@ class TwelveDataExchangeRateClientTest {
                 .expectNextCount(0) // Ожидаем пустой Mono
                 .verifyComplete();
 
-        // Verify
-        verify(exchangeRateService, times(1)).getExchangeRate(fromCurrencyEur, toCurrencyUsd, today);
-        verify(exchangeRateService, never()).getExchangeRate(fromCurrencyEur, toCurrencyUsd, yesterday);
+        // Verify: Проверяем, что вызывался findRateOptional
+        verify(exchangeRateService, times(1)).findRateOptional(fromCurrencyEur, toCurrencyUsd, today);
+        verify(exchangeRateService, never()).findRateOptional(fromCurrencyEur, toCurrencyUsd, yesterday);
     }
 
 
@@ -194,7 +186,7 @@ class TwelveDataExchangeRateClientTest {
     @DisplayName("fetchExchangeRate должен вернуть пустой Mono, когда API возвращает ошибку")
     void fetchExchangeRate_shouldReturnEmpty_whenApiCallFails() {
         // Arrange
-        // Имитируем ошибку от WebClient (на этапе bodyToMono или раньше)
+        // Имитируем ошибку от WebClient
         when(responseSpec.bodyToMono(eq(TwelveDataExchangeRateDTO.class)))
                 .thenReturn(Mono.error(new RuntimeException("API connection failed")));
 

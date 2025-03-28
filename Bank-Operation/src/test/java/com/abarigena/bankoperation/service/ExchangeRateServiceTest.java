@@ -156,10 +156,74 @@ class ExchangeRateServiceTest {
             exchangeRateService.getExchangeRate(fromCurrency, toCurrency, today);
         });
 
-        // 1. Убеждаемся, что сообщение исключения содержит ожидаемый текст.
-        assertThat(exception.getMessage()).contains("Курс не найден для данной валютной пары");
-        // 2. Проверяем, что ОБА метода репозитория были вызваны (попытка найти по дате и попытка найти последний).
+        String expectedMessagePart1 = "Курс обмена не найден для " + fromCurrency + "/" + toCurrency;
+        String expectedMessagePart2 = " на " + today;
+        assertThat(exception.getMessage())
+                .contains(expectedMessagePart1)
+                .contains(expectedMessagePart2);
+
         verify(exchangeRateRepository, times(1)).findByFromCurrencyAndToCurrencyAndDate(fromCurrency, toCurrency, today);
         verify(exchangeRateRepository, times(1)).findLatestRateForCurrencyPair(fromCurrency, toCurrency);
+    }
+
+    @Test
+    @DisplayName("getExchangeRate должен выбросить IllegalArgumentException, если прямой курс для не-USD валюты не найден")
+    void getExchangeRate_shouldThrowIllegalArgument_whenDirectRateForNonUsdNotFound() {
+        // Arrange
+        String from = "JPY";
+        String to = "EUR"; // Целевая валюта НЕ USD
+        LocalDate testDate = LocalDate.now();
+
+        // Имитируем, что findRateOptional НЕ нашел курс
+        when(exchangeRateRepository.findByFromCurrencyAndToCurrencyAndDate(from, to, testDate))
+                .thenReturn(Optional.empty());
+        when(exchangeRateRepository.findLatestRateForCurrencyPair(from, to))
+                .thenReturn(Optional.empty());
+
+        // Act & Assert
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            exchangeRateService.getExchangeRate(from, to, testDate);
+        });
+
+        // Проверяем сообщение об ошибке, которое теперь генерируется в конце метода
+        assertThat(exception.getMessage())
+                .isEqualTo("Курс обмена не найден для " + from + "/" + to + " на " + testDate);
+
+        // Проверяем, что методы репозитория вызывались для поиска
+        verify(exchangeRateRepository, times(1)).findByFromCurrencyAndToCurrencyAndDate(from, to, testDate);
+        verify(exchangeRateRepository, times(1)).findLatestRateForCurrencyPair(from, to);
+    }
+
+    @Test
+    @DisplayName("getExchangeRate должен выбросить исключение для KZT, если промежуточные курсы не найдены")
+    void getExchangeRate_shouldThrowException_whenKztCrossRateDependenciesMissing() {
+        // Arrange
+        String kzt = "KZT";
+        String rub = "RUB";
+        String usd = "USD";
+
+        // Имитируем отсутствие прямого KZT/USD
+        when(exchangeRateRepository.findByFromCurrencyAndToCurrencyAndDate(kzt, usd, today)).thenReturn(Optional.empty());
+        when(exchangeRateRepository.findLatestRateForCurrencyPair(kzt, usd)).thenReturn(Optional.empty());
+
+        // Имитируем отсутствие ОДНОГО из промежуточных курсов (например, KZT/RUB)
+        when(exchangeRateRepository.findByFromCurrencyAndToCurrencyAndDate(kzt, rub, today)).thenReturn(Optional.empty());
+        when(exchangeRateRepository.findLatestRateForCurrencyPair(kzt, rub)).thenReturn(Optional.empty());
+        // А второй (RUB/USD) пусть будет найден
+        ExchangeRate rubUsdRate = ExchangeRate.builder().closePrice(new BigDecimal("0.01")).date(today).build();
+        when(exchangeRateRepository.findByFromCurrencyAndToCurrencyAndDate(rub, usd, today)).thenReturn(Optional.of(rubUsdRate));
+
+        // Act & Assert
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            exchangeRateService.getExchangeRate(kzt, usd, today);
+        });
+
+        assertThat(exception.getMessage()).contains("Не найдены необходимые промежуточные курсы для расчета KZT/USD");
+
+        verify(exchangeRateRepository, times(1)).findByFromCurrencyAndToCurrencyAndDate(kzt, usd, today); // Прямой
+        verify(exchangeRateRepository, times(1)).findLatestRateForCurrencyPair(kzt, usd);      // Прямой (fallback)
+        verify(exchangeRateRepository, times(1)).findByFromCurrencyAndToCurrencyAndDate(kzt, rub, today); // Промежуточный 1
+        verify(exchangeRateRepository, times(1)).findLatestRateForCurrencyPair(kzt, rub);      // Промежуточный 1 (fallback)
+        verify(exchangeRateRepository, times(1)).findByFromCurrencyAndToCurrencyAndDate(rub, usd, today); // Промежуточный 2
     }
 }

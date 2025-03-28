@@ -1,74 +1,1191 @@
-2025-03-27 13:12:39.081 [main] INFO  c.a.b.BankOperationApplication - Starting BankOperationApplication using Java 21.0.1 with PID 5432 (E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation\target\classes started by danil in E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation)
-2025-03-27 13:12:39.082 [main] DEBUG c.a.b.BankOperationApplication - Running with Spring Boot v3.4.4, Spring v6.2.5
-2025-03-27 13:12:39.083 [main] INFO  c.a.b.BankOperationApplication - The following 1 profile is active: "dev"
-2025-03-27 13:12:39.937 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-2025-03-27 13:12:39.940 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Reactive Cassandra repositories in DEFAULT mode.
-2025-03-27 13:12:40.098 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExpenseLimitRepository; If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository
-2025-03-27 13:12:40.100 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.TransactionRepository; If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository
-2025-03-27 13:12:40.101 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 154 ms. Found 0 Reactive Cassandra repository interfaces.
-2025-03-27 13:12:40.109 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-2025-03-27 13:12:40.109 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Cassandra repositories in DEFAULT mode.
-2025-03-27 13:12:40.115 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExpenseLimitRepository; If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository
-2025-03-27 13:12:40.115 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.TransactionRepository; If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository
-2025-03-27 13:12:40.135 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 1 Cassandra repository interface.
-2025-03-27 13:12:40.148 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-2025-03-27 13:12:40.149 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-03-27 13:12:40.162 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExchangeRateRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
-2025-03-27 13:12:40.176 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 20 ms. Found 2 JPA repository interfaces.
-2025-03-27 13:12:40.749 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8000 (http)
-2025-03-27 13:12:40.763 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8000"]
-2025-03-27 13:12:40.765 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-03-27 13:12:40.765 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
-2025-03-27 13:12:40.839 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-03-27 13:12:40.840 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1703 ms
-2025-03-27 13:12:40.990 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-03-27 13:12:41.202 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3a6e9856
-2025-03-27 13:12:41.204 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-03-27 13:12:41.373 [main] INFO  liquibase.database - Set default schema name to public
-2025-03-27 13:12:41.829 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
-2025-03-27 13:12:41.879 [main] INFO  liquibase.ui - Database is up to date, no changesets to execute
-2025-03-27 13:12:41.882 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
-2025-03-27 13:12:41.894 [main] INFO  liquibase.util - UPDATE SUMMARY
-2025-03-27 13:12:41.894 [main] INFO  liquibase.util - Run:                          0
-2025-03-27 13:12:41.894 [main] INFO  liquibase.util - Previously run:               4
-2025-03-27 13:12:41.894 [main] INFO  liquibase.util - Filtered out:                 0
-2025-03-27 13:12:41.895 [main] INFO  liquibase.util - -------------------------------
-2025-03-27 13:12:41.895 [main] INFO  liquibase.util - Total change sets:            4
-2025-03-27 13:12:41.895 [main] INFO  liquibase.util - Update summary generated
-2025-03-27 13:12:41.898 [main] INFO  liquibase.command - Command execution complete
-2025-03-27 13:12:42.390 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-03-27 13:12:42.441 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-03-27 13:12:43.369 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-03-27 13:12:43.585 [main] INFO  c.d.o.d.i.c.DefaultMavenCoordinates - Apache Cassandra Java Driver (org.apache.cassandra:java-driver-core) version 4.18.1
-2025-03-27 13:12:44.106 [main] INFO  c.d.o.d.i.c.c.CqlPrepareAsyncProcessor - Adding handler to invalidate cached prepared statements on type changes
-2025-03-27 13:12:44.402 [s0-admin-0] INFO  c.d.o.d.internal.core.time.Clock - Using native clock for microsecond precision
-2025-03-27 13:12:44.957 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Начало обновления курсов валют для 2 пар
-2025-03-27 13:12:44.958 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: EUR/USD
-2025-03-27 13:12:44.958 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
-2025-03-27 13:12:45.252 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: RUB/USD
-2025-03-27 13:12:45.252 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для RUB -> USD
-2025-03-27 13:12:45.253 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Завершено обновление курсов валют
-2025-03-27 13:12:45.430 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-03-27 13:12:46.213 [reactor-http-nio-3] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары RUB -> USD на дату 2025-03-26
-2025-03-27 13:12:46.213 [reactor-http-nio-2] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-26
-2025-03-27 13:12:46.287 [reactor-http-nio-2] INFO  c.a.b.c.TwelveDataExchangeRateClient - Получен курс для EUR -> USD: закрытие=1.07616, предыдущее закрытие=1.078488
-2025-03-27 13:12:46.287 [reactor-http-nio-3] INFO  c.a.b.c.TwelveDataExchangeRateClient - Получен курс для RUB -> USD: закрытие=0.011941350, предыдущее закрытие=0.011816680
-2025-03-27 13:12:46.297 [reactor-http-nio-2] INFO  c.a.b.service.ExchangeRateService - Курс для EUR -> USD на дату 2025-03-27 уже существует
-2025-03-27 13:12:46.297 [reactor-http-nio-3] INFO  c.a.b.service.ExchangeRateService - Курс для RUB -> USD на дату 2025-03-27 уже существует
-2025-03-27 13:12:46.975 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-03-27 13:12:47.306 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8000"]
-2025-03-27 13:12:47.317 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8000 (http) with context path '/'
-2025-03-27 13:12:47.331 [main] INFO  c.a.b.BankOperationApplication - Started BankOperationApplication in 8.938 seconds (process running for 9.928)
-2025-03-27 13:12:58.902 [http-nio-8000-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-03-27 13:12:58.902 [http-nio-8000-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2025-03-27 13:12:58.903 [http-nio-8000-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2025-03-27 13:12:58.984 [http-nio-8000-exec-2] INFO  c.a.b.controller.LimitController - Получен запрос на установку нового лимита: LimitDTO(limitSum=2000.00, expenseCategory=SERVICE)
-2025-03-27 13:12:58.991 [http-nio-8000-exec-2] DEBUG c.a.b.service.LimitService - Установка нового лимита 2000.00 для категории SERVICE
-2025-03-27 13:12:58.991 [http-nio-8000-exec-2] DEBUG c.a.b.service.LimitService - DTO лимита смаплен в сущность: ExpenseLimit(id=null, limitSum=2000.00, limitDateTime=2025-03-27T13:12:58.991979700+05:00[Asia/Yekaterinburg], limitCurrencyShortname=USD, expenseCategory=SERVICE)
-2025-03-27 13:12:59.015 [http-nio-8000-exec-2] INFO  c.a.b.service.LimitService - Новый лимит 2000.00 для категории SERVICE сохранен с ID 122002ad-e58e-493c-9d0a-762ee14c3267
-2025-03-27 13:12:59.047 [http-nio-8000-exec-2] INFO  c.a.b.controller.LimitController - Новый лимит успешно установлен: 122002ad-e58e-493c-9d0a-762ee14c3267
-2025-03-27 13:13:06.309 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2025-03-27 13:13:06.323 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
-2025-03-27 13:13:10.441 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-03-27 13:13:10.443 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2025-03-27 13:13:10.448 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-03-28 14:20:50.914 [main] INFO  c.a.b.BankOperationApplicationTests - Starting BankOperationApplicationTests using Java 21.0.1 with PID 17292 (started by danil in E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation)
+2025-03-28 14:20:50.922 [main] DEBUG c.a.b.BankOperationApplicationTests - Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-03-28 14:20:50.923 [main] INFO  c.a.b.BankOperationApplicationTests - The following 1 profile is active: "dev"
+2025-03-28 14:20:52.155 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 14:20:52.159 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Reactive Cassandra repositories in DEFAULT mode.
+2025-03-28 14:20:52.375 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExpenseLimitRepository; If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository
+2025-03-28 14:20:52.380 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.TransactionRepository; If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository
+2025-03-28 14:20:52.381 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 211 ms. Found 0 Reactive Cassandra repository interfaces.
+2025-03-28 14:20:52.390 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 14:20:52.390 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Cassandra repositories in DEFAULT mode.
+2025-03-28 14:20:52.399 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExpenseLimitRepository; If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository
+2025-03-28 14:20:52.400 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.TransactionRepository; If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository
+2025-03-28 14:20:52.428 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 35 ms. Found 1 Cassandra repository interface.
+2025-03-28 14:20:52.444 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 14:20:52.445 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-28 14:20:52.468 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExchangeRateRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2025-03-28 14:20:52.480 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 28 ms. Found 2 JPA repository interfaces.
+2025-03-28 14:20:53.224 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-03-28 14:20:53.473 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1958524b
+2025-03-28 14:20:53.475 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-03-28 14:20:53.715 [main] INFO  liquibase.database - Set default schema name to public
+2025-03-28 14:20:54.351 [main] INFO  liquibase.changelog - Creating database history table with name: public.databasechangelog
+2025-03-28 14:20:54.392 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2025-03-28 14:20:54.506 [main] INFO  liquibase.lockservice - Successfully acquired change log lock
+2025-03-28 14:20:54.508 [main] INFO  liquibase.command - Using deploymentId: 3153654508
+2025-03-28 14:20:54.512 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2025-03-28 14:20:54.538 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::create-transactions-table::expense-tracker
+2025-03-28 14:20:54.550 [main] INFO  liquibase.changelog - Table transactions created
+2025-03-28 14:20:54.552 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::create-transactions-table::expense-tracker ran successfully in 12ms
+2025-03-28 14:20:54.563 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::create-expense-limits-table::expense-tracker
+2025-03-28 14:20:54.570 [main] INFO  liquibase.changelog - Table expense_limits created
+2025-03-28 14:20:54.572 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::create-expense-limits-table::expense-tracker ran successfully in 8ms
+2025-03-28 14:20:54.577 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::alter-transactions-datetime-to-timestamptz::your-github-username
+2025-03-28 14:20:54.583 [main] INFO  liquibase.changelog - transactions.datetime datatype was changed to timestamp with time zone
+2025-03-28 14:20:54.585 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::alter-transactions-datetime-to-timestamptz::your-github-username ran successfully in 8ms
+2025-03-28 14:20:54.590 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::alter-limits-datetime-to-timestamptz::your-github-username
+2025-03-28 14:20:54.595 [main] INFO  liquibase.changelog - expense_limits.limit_datetime datatype was changed to timestamp with time zone
+2025-03-28 14:20:54.597 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::alter-limits-datetime-to-timestamptz::your-github-username ran successfully in 7ms
+2025-03-28 14:20:54.608 [main] INFO  liquibase.util - UPDATE SUMMARY
+2025-03-28 14:20:54.608 [main] INFO  liquibase.util - Run:                          4
+2025-03-28 14:20:54.608 [main] INFO  liquibase.util - Previously run:               0
+2025-03-28 14:20:54.608 [main] INFO  liquibase.util - Filtered out:                 0
+2025-03-28 14:20:54.608 [main] INFO  liquibase.util - -------------------------------
+2025-03-28 14:20:54.608 [main] INFO  liquibase.util - Total change sets:            4
+2025-03-28 14:20:54.610 [main] INFO  liquibase.util - Update summary generated
+2025-03-28 14:20:54.613 [main] INFO  liquibase.command - Update command completed successfully.
+2025-03-28 14:20:54.613 [main] INFO  liquibase.ui - Liquibase: Update has been successful. Rows affected: 4
+2025-03-28 14:20:54.619 [main] INFO  liquibase.lockservice - Successfully released change log lock
+2025-03-28 14:20:54.621 [main] INFO  liquibase.command - Command execution complete
+2025-03-28 14:20:55.383 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-28 14:20:55.460 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-28 14:20:56.629 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-28 14:20:56.846 [main] INFO  c.d.o.d.i.c.DefaultMavenCoordinates - Apache Cassandra Java Driver (org.apache.cassandra:java-driver-core) version 4.18.1
+2025-03-28 14:20:57.547 [main] INFO  c.d.o.d.internal.core.ContactPoints - Contact point localhost:58160 resolves to multiple addresses, will use them all ([localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1])
+2025-03-28 14:20:57.662 [main] INFO  c.d.o.d.i.c.c.CqlPrepareAsyncProcessor - Adding handler to invalidate cached prepared statements on type changes
+2025-03-28 14:20:57.856 [s0-admin-0] INFO  c.d.o.d.internal.core.time.Clock - Using native clock for microsecond precision
+2025-03-28 14:20:57.912 [s0-admin-1] WARN  c.d.o.d.i.c.c.ControlConnection - [s0] Error connecting to Node(endPoint=localhost/[0:0:0:0:0:0:0:1]:58160, hostId=null, hashCode=27430d38), trying next node (ConnectionInitException: [s0|control|connecting...] Protocol initialization request, step 1 (OPTIONS): failed to send request (io.netty.channel.StacklessClosedChannelException))
+2025-03-28 14:20:58.118 [s0-admin-0] WARN  c.d.o.d.i.c.l.h.OptionalLocalDcHelper - [s0|default] You specified datacenter1 as the local DC, but some contact points are from a different DC: Node(endPoint=localhost/[0:0:0:0:0:0:0:1]:58160, hostId=null, hashCode=27430d38)=null; please provide the correct local DC, or check your contact points
+2025-03-28 14:20:59.596 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Начало обновления курсов валют для 3 пар
+2025-03-28 14:20:59.597 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: EUR/USD
+2025-03-28 14:20:59.597 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:21:00.007 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: RUB/USD
+2025-03-28 14:21:00.016 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для RUB -> USD
+2025-03-28 14:21:00.017 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: KZT/RUB
+2025-03-28 14:21:00.018 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для KZT -> RUB
+2025-03-28 14:21:00.020 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Завершено обновление курсов валют
+2025-03-28 14:21:00.321 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-28 14:21:01.202 [reactor-http-nio-3] ERROR c.a.b.c.TwelveDataExchangeRateClient - Ошибка при получении курса: Cannot invoke "java.util.List.isEmpty()" because the return value of "com.abarigena.bankoperation.dto.TwelveDataExchangeRateDTO.getValues()" is null
+2025-03-28 14:21:01.202 [reactor-http-nio-2] ERROR c.a.b.c.TwelveDataExchangeRateClient - Ошибка при получении курса: Cannot invoke "java.util.List.isEmpty()" because the return value of "com.abarigena.bankoperation.dto.TwelveDataExchangeRateDTO.getValues()" is null
+2025-03-28 14:21:01.202 [reactor-http-nio-4] ERROR c.a.b.c.TwelveDataExchangeRateClient - Ошибка при получении курса: Cannot invoke "java.util.List.isEmpty()" because the return value of "com.abarigena.bankoperation.dto.TwelveDataExchangeRateDTO.getValues()" is null
+2025-03-28 14:21:01.996 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-28 14:21:02.496 [main] INFO  c.a.b.BankOperationApplicationTests - Started BankOperationApplicationTests in 12.306 seconds (process running for 39.892)
+2025-03-28 14:21:04.755 [s0-admin-1] WARN  c.d.o.d.i.core.pool.ChannelPool - [s0|localhost/127.0.0.1:58160]  Error while opening new channel (ConnectionInitException: [s0|connecting...] Protocol initialization request, step 1 (STARTUP {CQL_VERSION=3.0.0, DRIVER_NAME=Apache Cassandra Java Driver, DRIVER_VERSION=4.18.1, CLIENT_ID=959bb44d-2176-4a45-a2a2-d74b501b6c1e}): failed to send request (io.netty.channel.StacklessClosedChannelException))
+2025-03-28 14:21:05.009 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Начало обновления курсов валют для 2 пар
+2025-03-28 14:21:05.010 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: EUR/USD
+2025-03-28 14:21:05.024 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: RUB/USD
+2025-03-28 14:21:05.025 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Завершено обновление курсов валют
+2025-03-28 14:21:05.075 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:21:05.120 [main] ERROR c.a.b.c.TwelveDataExchangeRateClient - Ошибка при получении курса: API connection failed
+2025-03-28 14:21:05.129 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:21:05.134 [main] WARN  c.a.b.c.TwelveDataExchangeRateClient - API не вернуло данные. Использован последний доступный курс.
+2025-03-28 14:21:05.149 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:21:05.151 [main] ERROR c.a.b.c.TwelveDataExchangeRateClient - Нет доступных данных о курсе для EUR -> USD
+2025-03-28 14:21:05.165 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:21:05.168 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Получен курс для EUR -> USD: закрытие=1.12, предыдущее закрытие=1.11
+2025-03-28 14:21:05.180 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:21:05.183 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Получен курс для EUR -> USD: закрытие=1.12, предыдущее закрытие=1.12
+2025-03-28 14:21:05.345 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 14:21:05.346 [main] WARN  c.a.b.service.ExchangeRateService - Курс для EUR/USD не найден на дату 2025-03-28. Используется последний доступный курс от 2025-03-27
+2025-03-28 14:21:05.346 [main] DEBUG c.a.b.service.ExchangeRateService - Найден прямой курс EUR/USD на 2025-03-28: 1.09
+2025-03-28 14:21:05.507 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 14:21:05.508 [main] WARN  c.a.b.service.ExchangeRateService - Прямой курс EUR/USD на 2025-03-28 не найден в базе.
+2025-03-28 14:21:05.508 [main] ERROR c.a.b.service.ExchangeRateService - Не удалось найти или вычислить курс для EUR/USD на 2025-03-28
+2025-03-28 14:21:05.556 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 14:21:05.557 [main] DEBUG c.a.b.service.ExchangeRateService - Найден прямой курс EUR/USD на 2025-03-28: 1.10
+2025-03-28 14:21:05.564 [main] INFO  c.a.b.service.ExchangeRateService - Курс для EUR -> USD на дату 2025-03-28 уже существует
+2025-03-28 14:21:05.573 [main] INFO  c.a.b.service.ExchangeRateService - Сохранен курс валют: валютная пара EUR -> USD, курс: 1.10
+2025-03-28 14:21:05.819 [main] DEBUG c.a.b.service.LimitService - Установка нового лимита 1500.00 для категории SERVICE
+2025-03-28 14:21:05.820 [main] DEBUG c.a.b.service.LimitService - DTO лимита смаплен в сущность: ExpenseLimit(id=null, limitSum=1500.00, limitDateTime=2025-03-28T14:21:05.818812200+05:00[Asia/Yekaterinburg], limitCurrencyShortname=USD, expenseCategory=SERVICE)
+2025-03-28 14:21:05.825 [main] INFO  c.a.b.service.LimitService - Новый лимит 1500.00 для категории SERVICE сохранен с ID 84e15a39-1186-4ee9-a010-128073a667b7
+2025-03-28 14:21:05.999 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:21:05.999 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=USD, sum=300.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:21:06.006 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 300.00
+2025-03-28 14:21:06.007 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 14:21:06.007 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:21:06.007 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 1000.00 USD
+2025-03-28 14:21:06.008 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1300.00 USD. Лимит превышен: false
+2025-03-28 14:21:06.008 [main] INFO  c.a.b.service.TransactionService - Транзакция 8ecc669d-a7ad-41b5-a465-e4825d35eb6f сохранена с флагом limitExceeded=false
+2025-03-28 14:21:06.019 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:21:06.020 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:21:06.022 [main] ERROR c.a.b.service.TransactionService - Не удалось получить курс для RUB/USD на 2024-03-15: Курс RUB не найден
+2025-03-28 14:21:06.031 [main] INFO  c.a.b.service.TransactionService - Запрос транзакций, превысивших лимиты, с деталями их лимитов.
+2025-03-28 14:21:06.032 [main] INFO  c.a.b.service.TransactionService - Найдено 1 транзакций, превысивших лимиты.
+2025-03-28 14:21:06.060 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:21:06.061 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=80000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:21:06.062 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 80000.00 RUB -> 880.00 USD
+2025-03-28 14:21:06.063 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 880.00
+2025-03-28 14:21:06.063 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1000.00 USD
+2025-03-28 14:21:06.063 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:21:06.064 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 100.00 USD
+2025-03-28 14:21:06.064 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 980.00 USD. Лимит превышен: false
+2025-03-28 14:21:06.064 [main] INFO  c.a.b.service.TransactionService - Транзакция 34266247-df7f-415d-bc24-3e6b7c164fe5 сохранена с флагом limitExceeded=false
+2025-03-28 14:21:06.074 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:21:06.074 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:21:06.075 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 14:21:06.076 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 14:21:06.076 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 14:21:06.076 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:21:06.077 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 500.00 USD
+2025-03-28 14:21:06.077 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1600.00 USD. Лимит превышен: true
+2025-03-28 14:21:06.077 [main] INFO  c.a.b.service.TransactionService - Транзакция af46cf14-d9b7-4b54-941b-cadf0110aa91 сохранена с флагом limitExceeded=true
+2025-03-28 14:21:06.090 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:21:06.091 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:21:06.092 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 14:21:06.092 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 14:21:06.092 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1000.00 USD
+2025-03-28 14:21:06.092 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:21:06.093 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 0.00 USD
+2025-03-28 14:21:06.093 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1100.00 USD. Лимит превышен: true
+2025-03-28 14:21:06.093 [main] INFO  c.a.b.service.TransactionService - Транзакция debc2cb9-3f8b-48f1-b831-d951485df6c6 сохранена с флагом limitExceeded=true
+2025-03-28 14:21:06.103 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:21:06.103 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:21:06.104 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 14:21:06.105 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 14:21:06.105 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 14:21:06.106 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:21:06.106 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 150.00 USD
+2025-03-28 14:21:06.106 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1250.00 USD. Лимит превышен: false
+2025-03-28 14:21:06.107 [main] INFO  c.a.b.service.TransactionService - Транзакция 357e1cc7-2fb9-43bc-b7a5-f1ab2f8889dc сохранена с флагом limitExceeded=false
+2025-03-28 14:21:08.290 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-28 14:21:08.292 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-03-28 14:21:08.299 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-03-28 14:29:26.709 [main] INFO  c.a.b.BankOperationApplicationTests - Starting BankOperationApplicationTests using Java 21.0.1 with PID 15380 (started by danil in E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation)
+2025-03-28 14:29:26.711 [main] DEBUG c.a.b.BankOperationApplicationTests - Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-03-28 14:29:26.712 [main] INFO  c.a.b.BankOperationApplicationTests - The following 1 profile is active: "dev"
+2025-03-28 14:29:27.819 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 14:29:27.823 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Reactive Cassandra repositories in DEFAULT mode.
+2025-03-28 14:29:28.006 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExpenseLimitRepository; If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository
+2025-03-28 14:29:28.010 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.TransactionRepository; If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository
+2025-03-28 14:29:28.011 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 172 ms. Found 0 Reactive Cassandra repository interfaces.
+2025-03-28 14:29:28.027 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 14:29:28.027 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Cassandra repositories in DEFAULT mode.
+2025-03-28 14:29:28.037 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExpenseLimitRepository; If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository
+2025-03-28 14:29:28.037 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.TransactionRepository; If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository
+2025-03-28 14:29:28.074 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 43 ms. Found 1 Cassandra repository interface.
+2025-03-28 14:29:28.088 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 14:29:28.089 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-28 14:29:28.106 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExchangeRateRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2025-03-28 14:29:28.125 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 27 ms. Found 2 JPA repository interfaces.
+2025-03-28 14:29:28.798 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-03-28 14:29:29.015 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@767cc126
+2025-03-28 14:29:29.016 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-03-28 14:29:29.238 [main] INFO  liquibase.database - Set default schema name to public
+2025-03-28 14:29:29.990 [main] INFO  liquibase.changelog - Creating database history table with name: public.databasechangelog
+2025-03-28 14:29:30.054 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2025-03-28 14:29:30.161 [main] INFO  liquibase.lockservice - Successfully acquired change log lock
+2025-03-28 14:29:30.163 [main] INFO  liquibase.command - Using deploymentId: 3154170163
+2025-03-28 14:29:30.168 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2025-03-28 14:29:30.208 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::create-transactions-table::expense-tracker
+2025-03-28 14:29:30.221 [main] INFO  liquibase.changelog - Table transactions created
+2025-03-28 14:29:30.224 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::create-transactions-table::expense-tracker ran successfully in 14ms
+2025-03-28 14:29:30.235 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::create-expense-limits-table::expense-tracker
+2025-03-28 14:29:30.241 [main] INFO  liquibase.changelog - Table expense_limits created
+2025-03-28 14:29:30.243 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::create-expense-limits-table::expense-tracker ran successfully in 8ms
+2025-03-28 14:29:30.248 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::alter-transactions-datetime-to-timestamptz::your-github-username
+2025-03-28 14:29:30.253 [main] INFO  liquibase.changelog - transactions.datetime datatype was changed to timestamp with time zone
+2025-03-28 14:29:30.255 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::alter-transactions-datetime-to-timestamptz::your-github-username ran successfully in 7ms
+2025-03-28 14:29:30.259 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::alter-limits-datetime-to-timestamptz::your-github-username
+2025-03-28 14:29:30.263 [main] INFO  liquibase.changelog - expense_limits.limit_datetime datatype was changed to timestamp with time zone
+2025-03-28 14:29:30.265 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::alter-limits-datetime-to-timestamptz::your-github-username ran successfully in 5ms
+2025-03-28 14:29:30.273 [main] INFO  liquibase.util - UPDATE SUMMARY
+2025-03-28 14:29:30.273 [main] INFO  liquibase.util - Run:                          4
+2025-03-28 14:29:30.274 [main] INFO  liquibase.util - Previously run:               0
+2025-03-28 14:29:30.274 [main] INFO  liquibase.util - Filtered out:                 0
+2025-03-28 14:29:30.274 [main] INFO  liquibase.util - -------------------------------
+2025-03-28 14:29:30.274 [main] INFO  liquibase.util - Total change sets:            4
+2025-03-28 14:29:30.274 [main] INFO  liquibase.util - Update summary generated
+2025-03-28 14:29:30.277 [main] INFO  liquibase.command - Update command completed successfully.
+2025-03-28 14:29:30.277 [main] INFO  liquibase.ui - Liquibase: Update has been successful. Rows affected: 4
+2025-03-28 14:29:30.281 [main] INFO  liquibase.lockservice - Successfully released change log lock
+2025-03-28 14:29:30.284 [main] INFO  liquibase.command - Command execution complete
+2025-03-28 14:29:30.888 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-28 14:29:30.944 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-28 14:29:32.009 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-28 14:29:32.229 [main] INFO  c.d.o.d.i.c.DefaultMavenCoordinates - Apache Cassandra Java Driver (org.apache.cassandra:java-driver-core) version 4.18.1
+2025-03-28 14:29:32.840 [main] INFO  c.d.o.d.internal.core.ContactPoints - Contact point localhost:58334 resolves to multiple addresses, will use them all ([localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1])
+2025-03-28 14:29:32.962 [main] INFO  c.d.o.d.i.c.c.CqlPrepareAsyncProcessor - Adding handler to invalidate cached prepared statements on type changes
+2025-03-28 14:29:33.148 [s0-admin-0] INFO  c.d.o.d.internal.core.time.Clock - Using native clock for microsecond precision
+2025-03-28 14:29:33.196 [s0-admin-1] WARN  c.d.o.d.i.c.c.ControlConnection - [s0] Error connecting to Node(endPoint=localhost/[0:0:0:0:0:0:0:1]:58334, hostId=null, hashCode=7014ada3), trying next node (ConnectionInitException: [s0|control|connecting...] Protocol initialization request, step 1 (OPTIONS): failed to send request (io.netty.channel.StacklessClosedChannelException))
+2025-03-28 14:29:33.393 [s0-admin-0] WARN  c.d.o.d.i.c.l.h.OptionalLocalDcHelper - [s0|default] You specified datacenter1 as the local DC, but some contact points are from a different DC: Node(endPoint=localhost/[0:0:0:0:0:0:0:1]:58334, hostId=null, hashCode=7014ada3)=null; please provide the correct local DC, or check your contact points
+2025-03-28 14:29:35.520 [main] WARN  o.s.w.c.s.GenericWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'twelveDataExchangeRateClient' defined in file [E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation\target\classes\com\abarigena\bankoperation\client\TwelveDataExchangeRateClient.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'exchangeRateService' defined in file [E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation\target\classes\com\abarigena\bankoperation\service\ExchangeRateService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'exchangeRateRepository' defined in com.abarigena.bankoperation.store.repository.ExchangeRateRepository defined in @EnableCassandraRepositories declared on CassandraRepositoriesRegistrar.EnableCassandraRepositoriesConfiguration: Cannot resolve reference to bean 'cassandraTemplate' while setting bean property 'cassandraTemplate'
+2025-03-28 14:29:37.589 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-28 14:29:37.592 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-03-28 14:29:37.596 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-03-28 14:29:37.615 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-03-28 14:29:37.649 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'twelveDataExchangeRateClient' defined in file [E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation\target\classes\com\abarigena\bankoperation\client\TwelveDataExchangeRateClient.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'exchangeRateService' defined in file [E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation\target\classes\com\abarigena\bankoperation\service\ExchangeRateService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'exchangeRateRepository' defined in com.abarigena.bankoperation.store.repository.ExchangeRateRepository defined in @EnableCassandraRepositories declared on CassandraRepositoriesRegistrar.EnableCassandraRepositoriesConfiguration: Cannot resolve reference to bean 'cassandraTemplate' while setting bean property 'cassandraTemplate'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1381)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1218)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.test.context.SpringBootContextLoader.lambda$loadContext$3(SpringBootContextLoader.java:144)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:58)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:46)
+	at org.springframework.boot.SpringApplication.withHook(SpringApplication.java:1461)
+	at org.springframework.boot.test.context.SpringBootContextLoader$ContextLoaderHook.run(SpringBootContextLoader.java:563)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:144)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:110)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:225)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:152)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:200)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:139)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:260)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:160)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$11(ClassBasedTestDescriptor.java:378)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:383)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$12(ClassBasedTestDescriptor.java:378)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:377)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$7(ClassBasedTestDescriptor.java:290)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:289)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$5(ClassBasedTestDescriptor.java:279)
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$6(ClassBasedTestDescriptor.java:278)
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$1(TestMethodTestDescriptor.java:105)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:104)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$2(NodeTestTask.java:128)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:128)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'exchangeRateService' defined in file [E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation\target\classes\com\abarigena\bankoperation\service\ExchangeRateService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'exchangeRateRepository' defined in com.abarigena.bankoperation.store.repository.ExchangeRateRepository defined in @EnableCassandraRepositories declared on CassandraRepositoriesRegistrar.EnableCassandraRepositoriesConfiguration: Cannot resolve reference to bean 'cassandraTemplate' while setting bean property 'cassandraTemplate'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1381)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1218)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1609)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1555)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 101 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'exchangeRateRepository' defined in com.abarigena.bankoperation.store.repository.ExchangeRateRepository defined in @EnableCassandraRepositories declared on CassandraRepositoriesRegistrar.EnableCassandraRepositoriesConfiguration: Cannot resolve reference to bean 'cassandraTemplate' while setting bean property 'cassandraTemplate'
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1711)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1460)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1609)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1555)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 114 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'cassandraTemplate' defined in class path resource [org/springframework/boot/autoconfigure/data/cassandra/CassandraDataAutoConfiguration.class]: Unsatisfied dependency expressed through method 'cassandraTemplate' parameter 0: Error creating bean with name 'cassandraSessionFactory' defined in class path resource [org/springframework/boot/autoconfigure/data/cassandra/CassandraDataAutoConfiguration.class]: Query timed out after PT2S
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:546)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	... 127 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'cassandraSessionFactory' defined in class path resource [org/springframework/boot/autoconfigure/data/cassandra/CassandraDataAutoConfiguration.class]: Query timed out after PT2S
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1812)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1667)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1555)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 137 common frames omitted
+Caused by: org.springframework.data.cassandra.CassandraDriverTimeoutException: Query timed out after PT2S
+	at org.springframework.data.cassandra.core.cql.CassandraExceptionTranslator.translate(CassandraExceptionTranslator.java:88)
+	at org.springframework.data.cassandra.core.cql.CassandraAccessor.translate(CassandraAccessor.java:421)
+	at org.springframework.data.cassandra.core.cql.CqlTemplate.translateException(CqlTemplate.java:551)
+	at org.springframework.data.cassandra.core.cql.CqlTemplate.query(CqlTemplate.java:166)
+	at org.springframework.data.cassandra.core.cql.CqlTemplate.queryForResultSet(CqlTemplate.java:211)
+	at org.springframework.data.cassandra.core.cql.CqlTemplate.execute(CqlTemplate.java:145)
+	at org.springframework.data.cassandra.core.CassandraPersistentEntitySchemaCreator.lambda$createTables$0(CassandraPersistentEntitySchemaCreator.java:99)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at org.springframework.data.cassandra.core.CassandraPersistentEntitySchemaCreator.createTables(CassandraPersistentEntitySchemaCreator.java:99)
+	at org.springframework.data.cassandra.config.SessionFactoryFactoryBean.performSchemaActions(SessionFactoryFactoryBean.java:267)
+	at org.springframework.data.cassandra.config.SessionFactoryFactoryBean.createTables(SessionFactoryFactoryBean.java:238)
+	at org.springframework.data.cassandra.config.SessionFactoryFactoryBean.performSchemaAction(SessionFactoryFactoryBean.java:224)
+	at org.springframework.data.cassandra.config.SessionFactoryFactoryBean.lambda$afterPropertiesSet$0(SessionFactoryFactoryBean.java:157)
+	at org.springframework.data.cassandra.config.SchemaUtils.withAsyncSchemaRefresh(SchemaUtils.java:96)
+	at org.springframework.data.cassandra.config.SchemaUtils.withSchemaRefresh(SchemaUtils.java:84)
+	at org.springframework.data.cassandra.config.SessionFactoryFactoryBean.afterPropertiesSet(SessionFactoryFactoryBean.java:163)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1859)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1808)
+	... 148 common frames omitted
+Caused by: com.datastax.oss.driver.api.core.DriverTimeoutException: Query timed out after PT2S
+	at com.datastax.oss.driver.api.core.DriverTimeoutException.copy(DriverTimeoutException.java:36)
+	at com.datastax.oss.driver.internal.core.util.concurrent.CompletableFutures.getUninterruptibly(CompletableFutures.java:151)
+	at com.datastax.oss.driver.internal.core.cql.CqlRequestSyncProcessor.process(CqlRequestSyncProcessor.java:55)
+	at com.datastax.oss.driver.internal.core.cql.CqlRequestSyncProcessor.process(CqlRequestSyncProcessor.java:32)
+	at com.datastax.oss.driver.internal.core.session.DefaultSession.execute(DefaultSession.java:234)
+	at com.datastax.oss.driver.api.core.cql.SyncCqlSession.execute(SyncCqlSession.java:56)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:216)
+	at jdk.proxy2/jdk.proxy2.$Proxy160.execute(Unknown Source)
+	at org.springframework.data.cassandra.core.cql.CqlTemplate.query(CqlTemplate.java:162)
+	... 170 common frames omitted
+2025-03-28 14:29:37.665 [main] WARN  o.s.test.context.TestContextManager - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener] to prepare test instance [com.abarigena.bankoperation.BankOperationApplicationTests@5c176a0f]
+java.lang.IllegalStateException: Failed to load ApplicationContext for [WebMergedContextConfiguration@65354578 testClass = com.abarigena.bankoperation.BankOperationApplicationTests, locations = [], classes = [com.abarigena.bankoperation.BankOperationApplication], contextInitializerClasses = [], activeProfiles = [], propertySourceDescriptors = [], propertySourceProperties = ["org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true"], contextCustomizers = [org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@30b6ffe0, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@24c22fe, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@72ade7e3, org.springframework.boot.test.web.reactive.server.WebTestClientContextCustomizer@23202fce, org.springframework.boot.test.web.reactor.netty.DisableReactorResourceFactoryGlobalResourcesContextCustomizerFactory$DisableReactorResourceFactoryGlobalResourcesContextCustomizerCustomizer@f627d13, org.springframework.boot.test.autoconfigure.OnFailureConditionReportContextCustomizerFactory$OnFailureConditionReportContextCustomizer@3224a577, org.springframework.boot.test.autoconfigure.actuate.observability.ObservabilityContextCustomizerFactory$DisableObservabilityContextCustomizer@1f, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizer@13b3d178, org.springframework.test.context.support.DynamicPropertiesContextCustomizer@8a3031f1, org.springframework.boot.test.context.SpringBootTestAnnotation@11d7ecdf], resourceBasePath = "src/main/webapp", contextLoader = org.springframework.boot.test.context.SpringBootContextLoader, parent = null]
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:180)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:130)
+	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:200)
+	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:139)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:260)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:160)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$11(ClassBasedTestDescriptor.java:378)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:383)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$12(ClassBasedTestDescriptor.java:378)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:377)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$7(ClassBasedTestDescriptor.java:290)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:289)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$5(ClassBasedTestDescriptor.java:279)
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$6(ClassBasedTestDescriptor.java:278)
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$1(TestMethodTestDescriptor.java:105)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:104)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:68)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$2(NodeTestTask.java:128)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:128)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:160)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:146)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:144)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:100)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'twelveDataExchangeRateClient' defined in file [E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation\target\classes\com\abarigena\bankoperation\client\TwelveDataExchangeRateClient.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'exchangeRateService' defined in file [E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation\target\classes\com\abarigena\bankoperation\service\ExchangeRateService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'exchangeRateRepository' defined in com.abarigena.bankoperation.store.repository.ExchangeRateRepository defined in @EnableCassandraRepositories declared on CassandraRepositoriesRegistrar.EnableCassandraRepositoriesConfiguration: Cannot resolve reference to bean 'cassandraTemplate' while setting bean property 'cassandraTemplate'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1381)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1218)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.test.context.SpringBootContextLoader.lambda$loadContext$3(SpringBootContextLoader.java:144)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:58)
+	at org.springframework.util.function.ThrowingSupplier.get(ThrowingSupplier.java:46)
+	at org.springframework.boot.SpringApplication.withHook(SpringApplication.java:1461)
+	at org.springframework.boot.test.context.SpringBootContextLoader$ContextLoaderHook.run(SpringBootContextLoader.java:563)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:144)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:110)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:225)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:152)
+	... 75 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'exchangeRateService' defined in file [E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation\target\classes\com\abarigena\bankoperation\service\ExchangeRateService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'exchangeRateRepository' defined in com.abarigena.bankoperation.store.repository.ExchangeRateRepository defined in @EnableCassandraRepositories declared on CassandraRepositoriesRegistrar.EnableCassandraRepositoriesConfiguration: Cannot resolve reference to bean 'cassandraTemplate' while setting bean property 'cassandraTemplate'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1381)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1218)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1609)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1555)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 101 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'exchangeRateRepository' defined in com.abarigena.bankoperation.store.repository.ExchangeRateRepository defined in @EnableCassandraRepositories declared on CassandraRepositoriesRegistrar.EnableCassandraRepositoriesConfiguration: Cannot resolve reference to bean 'cassandraTemplate' while setting bean property 'cassandraTemplate'
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1711)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1460)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1609)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1555)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 114 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'cassandraTemplate' defined in class path resource [org/springframework/boot/autoconfigure/data/cassandra/CassandraDataAutoConfiguration.class]: Unsatisfied dependency expressed through method 'cassandraTemplate' parameter 0: Error creating bean with name 'cassandraSessionFactory' defined in class path resource [org/springframework/boot/autoconfigure/data/cassandra/CassandraDataAutoConfiguration.class]: Query timed out after PT2S
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:546)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	... 127 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'cassandraSessionFactory' defined in class path resource [org/springframework/boot/autoconfigure/data/cassandra/CassandraDataAutoConfiguration.class]: Query timed out after PT2S
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1812)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1667)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1555)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 137 common frames omitted
+Caused by: org.springframework.data.cassandra.CassandraDriverTimeoutException: Query timed out after PT2S
+	at org.springframework.data.cassandra.core.cql.CassandraExceptionTranslator.translate(CassandraExceptionTranslator.java:88)
+	at org.springframework.data.cassandra.core.cql.CassandraAccessor.translate(CassandraAccessor.java:421)
+	at org.springframework.data.cassandra.core.cql.CqlTemplate.translateException(CqlTemplate.java:551)
+	at org.springframework.data.cassandra.core.cql.CqlTemplate.query(CqlTemplate.java:166)
+	at org.springframework.data.cassandra.core.cql.CqlTemplate.queryForResultSet(CqlTemplate.java:211)
+	at org.springframework.data.cassandra.core.cql.CqlTemplate.execute(CqlTemplate.java:145)
+	at org.springframework.data.cassandra.core.CassandraPersistentEntitySchemaCreator.lambda$createTables$0(CassandraPersistentEntitySchemaCreator.java:99)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:184)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1708)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:151)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:174)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at org.springframework.data.cassandra.core.CassandraPersistentEntitySchemaCreator.createTables(CassandraPersistentEntitySchemaCreator.java:99)
+	at org.springframework.data.cassandra.config.SessionFactoryFactoryBean.performSchemaActions(SessionFactoryFactoryBean.java:267)
+	at org.springframework.data.cassandra.config.SessionFactoryFactoryBean.createTables(SessionFactoryFactoryBean.java:238)
+	at org.springframework.data.cassandra.config.SessionFactoryFactoryBean.performSchemaAction(SessionFactoryFactoryBean.java:224)
+	at org.springframework.data.cassandra.config.SessionFactoryFactoryBean.lambda$afterPropertiesSet$0(SessionFactoryFactoryBean.java:157)
+	at org.springframework.data.cassandra.config.SchemaUtils.withAsyncSchemaRefresh(SchemaUtils.java:96)
+	at org.springframework.data.cassandra.config.SchemaUtils.withSchemaRefresh(SchemaUtils.java:84)
+	at org.springframework.data.cassandra.config.SessionFactoryFactoryBean.afterPropertiesSet(SessionFactoryFactoryBean.java:163)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1859)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1808)
+	... 148 common frames omitted
+Caused by: com.datastax.oss.driver.api.core.DriverTimeoutException: Query timed out after PT2S
+	at com.datastax.oss.driver.api.core.DriverTimeoutException.copy(DriverTimeoutException.java:36)
+	at com.datastax.oss.driver.internal.core.util.concurrent.CompletableFutures.getUninterruptibly(CompletableFutures.java:151)
+	at com.datastax.oss.driver.internal.core.cql.CqlRequestSyncProcessor.process(CqlRequestSyncProcessor.java:55)
+	at com.datastax.oss.driver.internal.core.cql.CqlRequestSyncProcessor.process(CqlRequestSyncProcessor.java:32)
+	at com.datastax.oss.driver.internal.core.session.DefaultSession.execute(DefaultSession.java:234)
+	at com.datastax.oss.driver.api.core.cql.SyncCqlSession.execute(SyncCqlSession.java:56)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:216)
+	at jdk.proxy2/jdk.proxy2.$Proxy160.execute(Unknown Source)
+	at org.springframework.data.cassandra.core.cql.CqlTemplate.query(CqlTemplate.java:162)
+	... 170 common frames omitted
+2025-03-28 14:29:40.047 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Начало обновления курсов валют для 2 пар
+2025-03-28 14:29:40.049 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: EUR/USD
+2025-03-28 14:29:40.069 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: RUB/USD
+2025-03-28 14:29:40.070 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Завершено обновление курсов валют
+2025-03-28 14:29:40.115 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:29:40.159 [main] ERROR c.a.b.c.TwelveDataExchangeRateClient - Ошибка при получении курса: API connection failed
+2025-03-28 14:29:40.173 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:29:40.176 [main] WARN  c.a.b.c.TwelveDataExchangeRateClient - API не вернуло данные. Использован последний доступный курс.
+2025-03-28 14:29:40.197 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:29:40.198 [main] ERROR c.a.b.c.TwelveDataExchangeRateClient - Нет доступных данных о курсе для EUR -> USD
+2025-03-28 14:29:40.210 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:29:40.212 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Получен курс для EUR -> USD: закрытие=1.12, предыдущее закрытие=1.11
+2025-03-28 14:29:40.221 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:29:40.224 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Получен курс для EUR -> USD: закрытие=1.12, предыдущее закрытие=1.12
+2025-03-28 14:29:40.359 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> EUR на дату 2025-03-28
+2025-03-28 14:29:40.472 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 14:29:40.473 [main] WARN  c.a.b.service.ExchangeRateService - Курс для EUR/USD не найден на дату 2025-03-28. Используется последний доступный курс от 2025-03-27
+2025-03-28 14:29:40.473 [main] DEBUG c.a.b.service.ExchangeRateService - Найден прямой курс EUR/USD на 2025-03-28: 1.09
+2025-03-28 14:29:40.484 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 14:29:40.484 [main] WARN  c.a.b.service.ExchangeRateService - Прямой курс EUR/USD на 2025-03-28 не найден в базе.
+2025-03-28 14:29:40.484 [main] ERROR c.a.b.service.ExchangeRateService - Не удалось найти или вычислить курс для EUR/USD на 2025-03-28
+2025-03-28 14:29:40.491 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 14:29:40.492 [main] DEBUG c.a.b.service.ExchangeRateService - Найден прямой курс EUR/USD на 2025-03-28: 1.10
+2025-03-28 14:29:40.499 [main] INFO  c.a.b.service.ExchangeRateService - Курс для EUR -> USD на дату 2025-03-28 уже существует
+2025-03-28 14:29:40.508 [main] INFO  c.a.b.service.ExchangeRateService - Сохранен курс валют: валютная пара EUR -> USD, курс: 1.10
+2025-03-28 14:29:40.518 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары KZT -> USD на дату 2025-03-28
+2025-03-28 14:29:40.518 [main] WARN  c.a.b.service.ExchangeRateService - Прямой курс KZT/USD на 2025-03-28 не найден в базе.
+2025-03-28 14:29:40.518 [main] INFO  c.a.b.service.ExchangeRateService - Пытаемся вычислить кросс-курс KZT/USD через KZT/RUB и RUB/USD на дату 2025-03-28
+2025-03-28 14:29:40.519 [main] ERROR c.a.b.service.ExchangeRateService - Невозможно вычислить кросс-курс KZT/USD на 2025-03-28: отсутствуют промежуточные курсы:KZT/RUB.
+2025-03-28 14:29:40.685 [main] DEBUG c.a.b.service.LimitService - Установка нового лимита 1500.00 для категории SERVICE
+2025-03-28 14:29:40.685 [main] DEBUG c.a.b.service.LimitService - DTO лимита смаплен в сущность: ExpenseLimit(id=null, limitSum=1500.00, limitDateTime=2025-03-28T14:29:40.683096400+05:00[Asia/Yekaterinburg], limitCurrencyShortname=USD, expenseCategory=SERVICE)
+2025-03-28 14:29:40.690 [main] INFO  c.a.b.service.LimitService - Новый лимит 1500.00 для категории SERVICE сохранен с ID 1f2fd030-717f-4521-b363-54496b3ebc6b
+2025-03-28 14:29:40.868 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:29:40.868 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=USD, sum=300.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:29:40.874 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 300.00
+2025-03-28 14:29:40.875 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 14:29:40.875 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:29:40.875 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 1000.00 USD
+2025-03-28 14:29:40.875 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1300.00 USD. Лимит превышен: false
+2025-03-28 14:29:40.875 [main] INFO  c.a.b.service.TransactionService - Транзакция 6dcd2db2-d46a-431b-9ad8-378d9e4cd685 сохранена с флагом limitExceeded=false
+2025-03-28 14:29:40.885 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:29:40.886 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:29:40.887 [main] ERROR c.a.b.service.TransactionService - Не удалось получить курс для RUB/USD на 2024-03-15: Курс RUB не найден
+2025-03-28 14:29:40.896 [main] INFO  c.a.b.service.TransactionService - Запрос транзакций, превысивших лимиты, с деталями их лимитов.
+2025-03-28 14:29:40.896 [main] INFO  c.a.b.service.TransactionService - Найдено 1 транзакций, превысивших лимиты.
+2025-03-28 14:29:40.917 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:29:40.917 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=80000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:29:40.918 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 80000.00 RUB -> 880.00 USD
+2025-03-28 14:29:40.918 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 880.00
+2025-03-28 14:29:40.918 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1000.00 USD
+2025-03-28 14:29:40.918 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:29:40.918 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 100.00 USD
+2025-03-28 14:29:40.918 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 980.00 USD. Лимит превышен: false
+2025-03-28 14:29:40.919 [main] INFO  c.a.b.service.TransactionService - Транзакция c71b2c0b-a693-4248-9f1e-5a2e8ecefced сохранена с флагом limitExceeded=false
+2025-03-28 14:29:40.927 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:29:40.927 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:29:40.928 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 14:29:40.928 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 14:29:40.928 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 14:29:40.928 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:29:40.928 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 500.00 USD
+2025-03-28 14:29:40.929 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1600.00 USD. Лимит превышен: true
+2025-03-28 14:29:40.929 [main] INFO  c.a.b.service.TransactionService - Транзакция e3b38dbf-8eb2-4322-bdc0-1915da9a1a98 сохранена с флагом limitExceeded=true
+2025-03-28 14:29:40.939 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:29:40.940 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:29:40.940 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 14:29:40.940 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 14:29:40.940 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1000.00 USD
+2025-03-28 14:29:40.941 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:29:40.941 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 0.00 USD
+2025-03-28 14:29:40.942 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1100.00 USD. Лимит превышен: true
+2025-03-28 14:29:40.942 [main] INFO  c.a.b.service.TransactionService - Транзакция 89b838ae-03cb-40bc-b50d-f7b6b7d46d38 сохранена с флагом limitExceeded=true
+2025-03-28 14:29:40.952 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:29:40.953 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:29:40.953 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 14:29:40.953 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 14:29:40.954 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 14:29:40.954 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:29:40.955 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 150.00 USD
+2025-03-28 14:29:40.955 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1250.00 USD. Лимит превышен: false
+2025-03-28 14:29:40.955 [main] INFO  c.a.b.service.TransactionService - Транзакция 00f30f1b-df66-47cc-b186-5899c94b99c9 сохранена с флагом limitExceeded=false
+2025-03-28 14:32:04.303 [main] INFO  c.a.b.BankOperationApplicationTests - Starting BankOperationApplicationTests using Java 21.0.1 with PID 15388 (started by danil in E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation)
+2025-03-28 14:32:04.305 [main] DEBUG c.a.b.BankOperationApplicationTests - Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-03-28 14:32:04.306 [main] INFO  c.a.b.BankOperationApplicationTests - The following 1 profile is active: "dev"
+2025-03-28 14:32:05.639 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 14:32:05.643 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Reactive Cassandra repositories in DEFAULT mode.
+2025-03-28 14:32:05.849 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExpenseLimitRepository; If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository
+2025-03-28 14:32:05.853 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.TransactionRepository; If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository
+2025-03-28 14:32:05.855 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 194 ms. Found 0 Reactive Cassandra repository interfaces.
+2025-03-28 14:32:05.866 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 14:32:05.866 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Cassandra repositories in DEFAULT mode.
+2025-03-28 14:32:05.877 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExpenseLimitRepository; If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository
+2025-03-28 14:32:05.877 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.TransactionRepository; If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository
+2025-03-28 14:32:05.913 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 44 ms. Found 1 Cassandra repository interface.
+2025-03-28 14:32:05.929 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 14:32:05.931 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-28 14:32:05.947 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExchangeRateRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2025-03-28 14:32:05.960 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 2 JPA repository interfaces.
+2025-03-28 14:32:06.672 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-03-28 14:32:06.894 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@14c18a6a
+2025-03-28 14:32:06.896 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-03-28 14:32:07.116 [main] INFO  liquibase.database - Set default schema name to public
+2025-03-28 14:32:07.681 [main] INFO  liquibase.changelog - Creating database history table with name: public.databasechangelog
+2025-03-28 14:32:07.737 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2025-03-28 14:32:07.860 [main] INFO  liquibase.lockservice - Successfully acquired change log lock
+2025-03-28 14:32:07.863 [main] INFO  liquibase.command - Using deploymentId: 3154327863
+2025-03-28 14:32:07.868 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2025-03-28 14:32:07.911 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::create-transactions-table::expense-tracker
+2025-03-28 14:32:07.934 [main] INFO  liquibase.changelog - Table transactions created
+2025-03-28 14:32:07.938 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::create-transactions-table::expense-tracker ran successfully in 24ms
+2025-03-28 14:32:07.953 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::create-expense-limits-table::expense-tracker
+2025-03-28 14:32:07.963 [main] INFO  liquibase.changelog - Table expense_limits created
+2025-03-28 14:32:07.966 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::create-expense-limits-table::expense-tracker ran successfully in 12ms
+2025-03-28 14:32:07.972 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::alter-transactions-datetime-to-timestamptz::your-github-username
+2025-03-28 14:32:07.981 [main] INFO  liquibase.changelog - transactions.datetime datatype was changed to timestamp with time zone
+2025-03-28 14:32:07.983 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::alter-transactions-datetime-to-timestamptz::your-github-username ran successfully in 9ms
+2025-03-28 14:32:07.988 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::alter-limits-datetime-to-timestamptz::your-github-username
+2025-03-28 14:32:07.993 [main] INFO  liquibase.changelog - expense_limits.limit_datetime datatype was changed to timestamp with time zone
+2025-03-28 14:32:07.995 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::alter-limits-datetime-to-timestamptz::your-github-username ran successfully in 6ms
+2025-03-28 14:32:08.007 [main] INFO  liquibase.util - UPDATE SUMMARY
+2025-03-28 14:32:08.007 [main] INFO  liquibase.util - Run:                          4
+2025-03-28 14:32:08.007 [main] INFO  liquibase.util - Previously run:               0
+2025-03-28 14:32:08.007 [main] INFO  liquibase.util - Filtered out:                 0
+2025-03-28 14:32:08.008 [main] INFO  liquibase.util - -------------------------------
+2025-03-28 14:32:08.008 [main] INFO  liquibase.util - Total change sets:            4
+2025-03-28 14:32:08.009 [main] INFO  liquibase.util - Update summary generated
+2025-03-28 14:32:08.013 [main] INFO  liquibase.command - Update command completed successfully.
+2025-03-28 14:32:08.013 [main] INFO  liquibase.ui - Liquibase: Update has been successful. Rows affected: 4
+2025-03-28 14:32:08.018 [main] INFO  liquibase.lockservice - Successfully released change log lock
+2025-03-28 14:32:08.020 [main] INFO  liquibase.command - Command execution complete
+2025-03-28 14:32:08.763 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-28 14:32:08.822 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-28 14:32:09.999 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-28 14:32:10.222 [main] INFO  c.d.o.d.i.c.DefaultMavenCoordinates - Apache Cassandra Java Driver (org.apache.cassandra:java-driver-core) version 4.18.1
+2025-03-28 14:32:10.879 [main] INFO  c.d.o.d.internal.core.ContactPoints - Contact point localhost:58414 resolves to multiple addresses, will use them all ([localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1])
+2025-03-28 14:32:11.016 [main] INFO  c.d.o.d.i.c.c.CqlPrepareAsyncProcessor - Adding handler to invalidate cached prepared statements on type changes
+2025-03-28 14:32:11.203 [s0-admin-0] INFO  c.d.o.d.internal.core.time.Clock - Using native clock for microsecond precision
+2025-03-28 14:32:11.449 [s0-admin-0] WARN  c.d.o.d.i.c.l.h.OptionalLocalDcHelper - [s0|default] You specified datacenter1 as the local DC, but some contact points are from a different DC: Node(endPoint=localhost/[0:0:0:0:0:0:0:1]:58414, hostId=null, hashCode=631fb315)=null; please provide the correct local DC, or check your contact points
+2025-03-28 14:32:13.017 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Начало обновления курсов валют для 3 пар
+2025-03-28 14:32:13.017 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: EUR/USD
+2025-03-28 14:32:13.017 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:32:13.366 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: RUB/USD
+2025-03-28 14:32:13.367 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для RUB -> USD
+2025-03-28 14:32:13.368 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: KZT/RUB
+2025-03-28 14:32:13.368 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для KZT -> RUB
+2025-03-28 14:32:13.369 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Завершено обновление курсов валют
+2025-03-28 14:32:13.676 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-28 14:32:14.613 [reactor-http-nio-2] ERROR c.a.b.c.TwelveDataExchangeRateClient - Ошибка при получении курса: Cannot invoke "java.util.List.isEmpty()" because the return value of "com.abarigena.bankoperation.dto.TwelveDataExchangeRateDTO.getValues()" is null
+2025-03-28 14:32:14.843 [reactor-http-nio-4] ERROR c.a.b.c.TwelveDataExchangeRateClient - Ошибка при получении курса: Cannot invoke "java.util.List.isEmpty()" because the return value of "com.abarigena.bankoperation.dto.TwelveDataExchangeRateDTO.getValues()" is null
+2025-03-28 14:32:15.411 [reactor-http-nio-3] ERROR c.a.b.c.TwelveDataExchangeRateClient - Ошибка при получении курса: Cannot invoke "java.util.List.isEmpty()" because the return value of "com.abarigena.bankoperation.dto.TwelveDataExchangeRateDTO.getValues()" is null
+2025-03-28 14:32:15.770 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-28 14:32:16.286 [main] INFO  c.a.b.BankOperationApplicationTests - Started BankOperationApplicationTests in 12.729 seconds (process running for 28.219)
+2025-03-28 14:32:18.547 [s0-admin-1] WARN  c.d.o.d.i.core.pool.ChannelPool - [s0|localhost/127.0.0.1:58414]  Error while opening new channel (ConnectionInitException: [s0|connecting...] Protocol initialization request, step 1 (STARTUP {CQL_VERSION=3.0.0, DRIVER_NAME=Apache Cassandra Java Driver, DRIVER_VERSION=4.18.1, CLIENT_ID=855c9df6-ab4c-4c10-93bf-fac840747940}): failed to send request (io.netty.channel.StacklessClosedChannelException))
+2025-03-28 14:32:18.690 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Начало обновления курсов валют для 2 пар
+2025-03-28 14:32:18.690 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: EUR/USD
+2025-03-28 14:32:18.699 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: RUB/USD
+2025-03-28 14:32:18.701 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Завершено обновление курсов валют
+2025-03-28 14:32:18.746 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:32:18.788 [main] ERROR c.a.b.c.TwelveDataExchangeRateClient - Ошибка при получении курса: API connection failed
+2025-03-28 14:32:18.799 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:32:18.802 [main] WARN  c.a.b.c.TwelveDataExchangeRateClient - API не вернуло данные. Использован последний доступный курс.
+2025-03-28 14:32:18.821 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:32:18.824 [main] ERROR c.a.b.c.TwelveDataExchangeRateClient - Нет доступных данных о курсе для EUR -> USD
+2025-03-28 14:32:18.834 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:32:18.837 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Получен курс для EUR -> USD: закрытие=1.12, предыдущее закрытие=1.11
+2025-03-28 14:32:18.849 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:32:18.852 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Получен курс для EUR -> USD: закрытие=1.12, предыдущее закрытие=1.12
+2025-03-28 14:32:19.021 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> EUR на дату 2025-03-28
+2025-03-28 14:32:19.135 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 14:32:19.135 [main] WARN  c.a.b.service.ExchangeRateService - Курс для EUR/USD не найден на дату 2025-03-28. Используется последний доступный курс от 2025-03-27
+2025-03-28 14:32:19.136 [main] DEBUG c.a.b.service.ExchangeRateService - Найден прямой курс EUR/USD на 2025-03-28: 1.09
+2025-03-28 14:32:19.149 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 14:32:19.150 [main] WARN  c.a.b.service.ExchangeRateService - Прямой курс EUR/USD на 2025-03-28 не найден в базе.
+2025-03-28 14:32:19.151 [main] ERROR c.a.b.service.ExchangeRateService - Не удалось найти или вычислить курс для EUR/USD на 2025-03-28
+2025-03-28 14:32:19.160 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 14:32:19.161 [main] DEBUG c.a.b.service.ExchangeRateService - Найден прямой курс EUR/USD на 2025-03-28: 1.10
+2025-03-28 14:32:19.168 [main] INFO  c.a.b.service.ExchangeRateService - Курс для EUR -> USD на дату 2025-03-28 уже существует
+2025-03-28 14:32:19.178 [main] INFO  c.a.b.service.ExchangeRateService - Сохранен курс валют: валютная пара EUR -> USD, курс: 1.10
+2025-03-28 14:32:19.195 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары KZT -> USD на дату 2025-03-28
+2025-03-28 14:32:19.196 [main] WARN  c.a.b.service.ExchangeRateService - Прямой курс KZT/USD на 2025-03-28 не найден в базе.
+2025-03-28 14:32:19.196 [main] INFO  c.a.b.service.ExchangeRateService - Пытаемся вычислить кросс-курс KZT/USD через KZT/RUB и RUB/USD на дату 2025-03-28
+2025-03-28 14:32:19.197 [main] ERROR c.a.b.service.ExchangeRateService - Невозможно вычислить кросс-курс KZT/USD на 2025-03-28: отсутствуют промежуточные курсы:KZT/RUB.
+2025-03-28 14:32:19.450 [main] DEBUG c.a.b.service.LimitService - Установка нового лимита 1500.00 для категории SERVICE
+2025-03-28 14:32:19.451 [main] DEBUG c.a.b.service.LimitService - DTO лимита смаплен в сущность: ExpenseLimit(id=null, limitSum=1500.00, limitDateTime=2025-03-28T14:32:19.449211900+05:00[Asia/Yekaterinburg], limitCurrencyShortname=USD, expenseCategory=SERVICE)
+2025-03-28 14:32:19.456 [main] INFO  c.a.b.service.LimitService - Новый лимит 1500.00 для категории SERVICE сохранен с ID c1ac151b-6b1e-4099-99cb-896cf8da1304
+2025-03-28 14:32:19.664 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:32:19.665 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=USD, sum=300.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:32:19.670 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 300.00
+2025-03-28 14:32:19.671 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 14:32:19.671 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:32:19.672 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 1000.00 USD
+2025-03-28 14:32:19.672 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1300.00 USD. Лимит превышен: false
+2025-03-28 14:32:19.672 [main] INFO  c.a.b.service.TransactionService - Транзакция b90d1e00-ef7e-4331-9c83-cd9c3136951a сохранена с флагом limitExceeded=false
+2025-03-28 14:32:19.682 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:32:19.682 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:32:19.684 [main] ERROR c.a.b.service.TransactionService - Не удалось получить курс для RUB/USD на 2024-03-15: Курс RUB не найден
+2025-03-28 14:32:19.691 [main] INFO  c.a.b.service.TransactionService - Запрос транзакций, превысивших лимиты, с деталями их лимитов.
+2025-03-28 14:32:19.692 [main] INFO  c.a.b.service.TransactionService - Найдено 1 транзакций, превысивших лимиты.
+2025-03-28 14:32:19.737 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:32:19.738 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=80000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:32:19.741 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 80000.00 RUB -> 880.00 USD
+2025-03-28 14:32:19.742 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 880.00
+2025-03-28 14:32:19.743 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1000.00 USD
+2025-03-28 14:32:19.743 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:32:19.744 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 100.00 USD
+2025-03-28 14:32:19.744 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 980.00 USD. Лимит превышен: false
+2025-03-28 14:32:19.745 [main] INFO  c.a.b.service.TransactionService - Транзакция 8198f7f4-1e0b-4a58-8a26-e45e38616df2 сохранена с флагом limitExceeded=false
+2025-03-28 14:32:19.758 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:32:19.758 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:32:19.759 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 14:32:19.759 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 14:32:19.759 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 14:32:19.759 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:32:19.759 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 500.00 USD
+2025-03-28 14:32:19.759 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1600.00 USD. Лимит превышен: true
+2025-03-28 14:32:19.759 [main] INFO  c.a.b.service.TransactionService - Транзакция 22bdea8d-ea64-4f5d-a764-f6a8ad2020f3 сохранена с флагом limitExceeded=true
+2025-03-28 14:32:19.773 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:32:19.774 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:32:19.776 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 14:32:19.776 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 14:32:19.776 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1000.00 USD
+2025-03-28 14:32:19.776 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:32:19.777 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 0.00 USD
+2025-03-28 14:32:19.777 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1100.00 USD. Лимит превышен: true
+2025-03-28 14:32:19.777 [main] INFO  c.a.b.service.TransactionService - Транзакция 8474a181-a4b1-4c58-934a-343b84a2edd3 сохранена с флагом limitExceeded=true
+2025-03-28 14:32:19.790 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:32:19.791 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:32:19.794 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 14:32:19.795 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 14:32:19.795 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 14:32:19.795 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:32:19.796 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 150.00 USD
+2025-03-28 14:32:19.796 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1250.00 USD. Лимит превышен: false
+2025-03-28 14:32:19.796 [main] INFO  c.a.b.service.TransactionService - Транзакция a83e1bed-5358-4276-b2e9-7ec047a10bed сохранена с флагом limitExceeded=false
+2025-03-28 14:32:21.978 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-28 14:32:21.980 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-03-28 14:32:21.988 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-03-28 14:54:21.953 [main] INFO  c.a.b.BankOperationApplicationTests - Starting BankOperationApplicationTests using Java 21.0.1 with PID 6236 (started by danil in E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation)
+2025-03-28 14:54:21.954 [main] DEBUG c.a.b.BankOperationApplicationTests - Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-03-28 14:54:21.955 [main] INFO  c.a.b.BankOperationApplicationTests - The following 1 profile is active: "dev"
+2025-03-28 14:54:22.996 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 14:54:23.001 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Reactive Cassandra repositories in DEFAULT mode.
+2025-03-28 14:54:23.185 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExpenseLimitRepository; If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository
+2025-03-28 14:54:23.187 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.TransactionRepository; If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository
+2025-03-28 14:54:23.188 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 174 ms. Found 0 Reactive Cassandra repository interfaces.
+2025-03-28 14:54:23.197 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 14:54:23.197 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Cassandra repositories in DEFAULT mode.
+2025-03-28 14:54:23.206 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExpenseLimitRepository; If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository
+2025-03-28 14:54:23.206 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.TransactionRepository; If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository
+2025-03-28 14:54:23.238 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 39 ms. Found 1 Cassandra repository interface.
+2025-03-28 14:54:23.256 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 14:54:23.258 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-28 14:54:23.277 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExchangeRateRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2025-03-28 14:54:23.291 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 2 JPA repository interfaces.
+2025-03-28 14:54:23.964 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-03-28 14:54:24.188 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@642614b7
+2025-03-28 14:54:24.189 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-03-28 14:54:24.423 [main] INFO  liquibase.database - Set default schema name to public
+2025-03-28 14:54:25.080 [main] INFO  liquibase.changelog - Creating database history table with name: public.databasechangelog
+2025-03-28 14:54:25.130 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2025-03-28 14:54:25.228 [main] INFO  liquibase.lockservice - Successfully acquired change log lock
+2025-03-28 14:54:25.230 [main] INFO  liquibase.command - Using deploymentId: 3155665230
+2025-03-28 14:54:25.242 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2025-03-28 14:54:25.279 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::create-transactions-table::expense-tracker
+2025-03-28 14:54:25.294 [main] INFO  liquibase.changelog - Table transactions created
+2025-03-28 14:54:25.296 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::create-transactions-table::expense-tracker ran successfully in 14ms
+2025-03-28 14:54:25.306 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::create-expense-limits-table::expense-tracker
+2025-03-28 14:54:25.313 [main] INFO  liquibase.changelog - Table expense_limits created
+2025-03-28 14:54:25.315 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::create-expense-limits-table::expense-tracker ran successfully in 8ms
+2025-03-28 14:54:25.319 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::alter-transactions-datetime-to-timestamptz::your-github-username
+2025-03-28 14:54:25.326 [main] INFO  liquibase.changelog - transactions.datetime datatype was changed to timestamp with time zone
+2025-03-28 14:54:25.328 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::alter-transactions-datetime-to-timestamptz::your-github-username ran successfully in 9ms
+2025-03-28 14:54:25.334 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::alter-limits-datetime-to-timestamptz::your-github-username
+2025-03-28 14:54:25.339 [main] INFO  liquibase.changelog - expense_limits.limit_datetime datatype was changed to timestamp with time zone
+2025-03-28 14:54:25.340 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::alter-limits-datetime-to-timestamptz::your-github-username ran successfully in 5ms
+2025-03-28 14:54:25.349 [main] INFO  liquibase.util - UPDATE SUMMARY
+2025-03-28 14:54:25.349 [main] INFO  liquibase.util - Run:                          4
+2025-03-28 14:54:25.349 [main] INFO  liquibase.util - Previously run:               0
+2025-03-28 14:54:25.349 [main] INFO  liquibase.util - Filtered out:                 0
+2025-03-28 14:54:25.349 [main] INFO  liquibase.util - -------------------------------
+2025-03-28 14:54:25.349 [main] INFO  liquibase.util - Total change sets:            4
+2025-03-28 14:54:25.350 [main] INFO  liquibase.util - Update summary generated
+2025-03-28 14:54:25.353 [main] INFO  liquibase.command - Update command completed successfully.
+2025-03-28 14:54:25.353 [main] INFO  liquibase.ui - Liquibase: Update has been successful. Rows affected: 4
+2025-03-28 14:54:25.357 [main] INFO  liquibase.lockservice - Successfully released change log lock
+2025-03-28 14:54:25.359 [main] INFO  liquibase.command - Command execution complete
+2025-03-28 14:54:25.995 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-28 14:54:26.067 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-28 14:54:27.096 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-28 14:54:27.302 [main] INFO  c.d.o.d.i.c.DefaultMavenCoordinates - Apache Cassandra Java Driver (org.apache.cassandra:java-driver-core) version 4.18.1
+2025-03-28 14:54:27.898 [main] INFO  c.d.o.d.internal.core.ContactPoints - Contact point localhost:58732 resolves to multiple addresses, will use them all ([localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1])
+2025-03-28 14:54:28.082 [main] INFO  c.d.o.d.i.c.c.CqlPrepareAsyncProcessor - Adding handler to invalidate cached prepared statements on type changes
+2025-03-28 14:54:28.292 [s0-admin-0] INFO  c.d.o.d.internal.core.time.Clock - Using native clock for microsecond precision
+2025-03-28 14:54:28.530 [s0-admin-0] WARN  c.d.o.d.i.c.l.h.OptionalLocalDcHelper - [s0|default] You specified datacenter1 as the local DC, but some contact points are from a different DC: Node(endPoint=localhost/[0:0:0:0:0:0:0:1]:58732, hostId=null, hashCode=2e2e4c3e)=null; please provide the correct local DC, or check your contact points
+2025-03-28 14:54:30.049 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Начало обновления курсов валют для 3 пар
+2025-03-28 14:54:30.051 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: EUR/USD
+2025-03-28 14:54:30.051 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:54:30.397 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: RUB/USD
+2025-03-28 14:54:30.397 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для RUB -> USD
+2025-03-28 14:54:30.398 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: KZT/RUB
+2025-03-28 14:54:30.398 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для KZT -> RUB
+2025-03-28 14:54:30.399 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Завершено обновление курсов валют
+2025-03-28 14:54:30.669 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-28 14:54:31.545 [reactor-http-nio-3] WARN  c.a.b.c.TwelveDataExchangeRateClient - API Twelve Data не вернуло данных (или вернуло null) для RUB -> USD. Попытка использовать fallback.
+2025-03-28 14:54:31.545 [reactor-http-nio-2] WARN  c.a.b.c.TwelveDataExchangeRateClient - API Twelve Data не вернуло данных (или вернуло null) для EUR -> USD. Попытка использовать fallback.
+2025-03-28 14:54:31.545 [reactor-http-nio-4] WARN  c.a.b.c.TwelveDataExchangeRateClient - API Twelve Data не вернуло данных (или вернуло null) для KZT -> RUB. Попытка использовать fallback.
+2025-03-28 14:54:31.671 [reactor-http-nio-4] ERROR c.a.b.c.TwelveDataExchangeRateClient - Fallback невозможен: Нет доступных данных о курсе для KZT -> RUB
+2025-03-28 14:54:31.671 [reactor-http-nio-3] ERROR c.a.b.c.TwelveDataExchangeRateClient - Fallback невозможен: Нет доступных данных о курсе для RUB -> USD
+2025-03-28 14:54:31.671 [reactor-http-nio-2] ERROR c.a.b.c.TwelveDataExchangeRateClient - Fallback невозможен: Нет доступных данных о курсе для EUR -> USD
+2025-03-28 14:54:32.519 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-28 14:54:32.946 [main] INFO  c.a.b.BankOperationApplicationTests - Started BankOperationApplicationTests in 11.593 seconds (process running for 26.9)
+2025-03-28 14:54:35.200 [s0-admin-1] WARN  c.d.o.d.i.core.pool.ChannelPool - [s0|localhost/127.0.0.1:58732]  Error while opening new channel (ConnectionInitException: [s0|connecting...] Protocol initialization request, step 1 (STARTUP {CQL_VERSION=3.0.0, DRIVER_NAME=Apache Cassandra Java Driver, DRIVER_VERSION=4.18.1, CLIENT_ID=17f13030-2b9f-4d51-86ae-a4b30f4cc631}): failed to send request (io.netty.channel.StacklessClosedChannelException))
+2025-03-28 14:54:35.559 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Начало обновления курсов валют для 2 пар
+2025-03-28 14:54:35.560 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: EUR/USD
+2025-03-28 14:54:35.569 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: RUB/USD
+2025-03-28 14:54:35.570 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Завершено обновление курсов валют
+2025-03-28 14:54:35.621 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:54:35.679 [main] ERROR c.a.b.c.TwelveDataExchangeRateClient - Ошибка при получении курса: API connection failed
+2025-03-28 14:54:35.694 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:54:35.696 [main] WARN  c.a.b.c.TwelveDataExchangeRateClient - API Twelve Data не вернуло данных (или вернуло null) для EUR -> USD. Попытка использовать fallback.
+2025-03-28 14:54:35.697 [main] ERROR c.a.b.c.TwelveDataExchangeRateClient - Fallback невозможен: Нет доступных данных о курсе для EUR -> USD
+2025-03-28 14:54:35.731 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:54:35.732 [main] WARN  c.a.b.c.TwelveDataExchangeRateClient - API Twelve Data не вернуло данных (или вернуло null) для EUR -> USD. Попытка использовать fallback.
+2025-03-28 14:54:35.733 [main] ERROR c.a.b.c.TwelveDataExchangeRateClient - Fallback невозможен: Нет доступных данных о курсе для EUR -> USD
+2025-03-28 14:54:35.763 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:54:35.764 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Получен курс от API для EUR -> USD: закрытие=1.12, предыдущее закрытие=1.12
+2025-03-28 14:54:35.774 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 14:54:35.776 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Получен курс от API для EUR -> USD: закрытие=1.12, предыдущее закрытие=1.12
+2025-03-28 14:54:35.946 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> EUR на дату 2025-03-28
+2025-03-28 14:54:35.958 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 14:54:35.958 [main] WARN  c.a.b.service.ExchangeRateService - Курс для EUR/USD не найден на дату 2025-03-28. Используется последний доступный курс от 2025-03-27
+2025-03-28 14:54:35.959 [main] DEBUG c.a.b.service.ExchangeRateService - Найден прямой курс EUR/USD на 2025-03-28: 1.09
+2025-03-28 14:54:36.071 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 14:54:36.072 [main] WARN  c.a.b.service.ExchangeRateService - Прямой курс EUR/USD на 2025-03-28 не найден в базе.
+2025-03-28 14:54:36.073 [main] ERROR c.a.b.service.ExchangeRateService - Не удалось найти или вычислить курс для EUR/USD на 2025-03-28
+2025-03-28 14:54:36.086 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 14:54:36.087 [main] DEBUG c.a.b.service.ExchangeRateService - Найден прямой курс EUR/USD на 2025-03-28: 1.10
+2025-03-28 14:54:36.092 [main] INFO  c.a.b.service.ExchangeRateService - Курс для EUR -> USD на дату 2025-03-28 уже существует
+2025-03-28 14:54:36.099 [main] INFO  c.a.b.service.ExchangeRateService - Сохранен курс валют: валютная пара EUR -> USD, курс: 1.10
+2025-03-28 14:54:36.107 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары KZT -> USD на дату 2025-03-28
+2025-03-28 14:54:36.108 [main] WARN  c.a.b.service.ExchangeRateService - Прямой курс KZT/USD на 2025-03-28 не найден в базе.
+2025-03-28 14:54:36.108 [main] INFO  c.a.b.service.ExchangeRateService - Пытаемся вычислить кросс-курс KZT/USD через KZT/RUB и RUB/USD на дату 2025-03-28
+2025-03-28 14:54:36.108 [main] ERROR c.a.b.service.ExchangeRateService - Невозможно вычислить кросс-курс KZT/USD на 2025-03-28: отсутствуют промежуточные курсы:KZT/RUB.
+2025-03-28 14:54:36.297 [main] DEBUG c.a.b.service.LimitService - Установка нового лимита 1500.00 для категории SERVICE
+2025-03-28 14:54:36.297 [main] DEBUG c.a.b.service.LimitService - DTO лимита смаплен в сущность: ExpenseLimit(id=null, limitSum=1500.00, limitDateTime=2025-03-28T14:54:36.296233+05:00[Asia/Yekaterinburg], limitCurrencyShortname=USD, expenseCategory=SERVICE)
+2025-03-28 14:54:36.302 [main] INFO  c.a.b.service.LimitService - Новый лимит 1500.00 для категории SERVICE сохранен с ID da197404-c383-46ba-af85-07ac8ea8cf07
+2025-03-28 14:54:36.495 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:54:36.496 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=USD, sum=300.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:54:36.501 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 300.00
+2025-03-28 14:54:36.502 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 14:54:36.503 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:54:36.503 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 1000.00 USD
+2025-03-28 14:54:36.504 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1300.00 USD. Лимит превышен: false
+2025-03-28 14:54:36.504 [main] INFO  c.a.b.service.TransactionService - Транзакция 88f0cb17-9092-4a02-9a24-6469cc4640e4 сохранена с флагом limitExceeded=false
+2025-03-28 14:54:36.510 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:54:36.511 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:54:36.512 [main] ERROR c.a.b.service.TransactionService - Не удалось получить курс для RUB/USD на 2024-03-15: Курс RUB не найден
+2025-03-28 14:54:36.520 [main] INFO  c.a.b.service.TransactionService - Запрос транзакций, превысивших лимиты, с деталями их лимитов.
+2025-03-28 14:54:36.520 [main] INFO  c.a.b.service.TransactionService - Найдено 1 транзакций, превысивших лимиты.
+2025-03-28 14:54:36.544 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:54:36.544 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=80000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:54:36.544 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 80000.00 RUB -> 880.00 USD
+2025-03-28 14:54:36.545 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 880.00
+2025-03-28 14:54:36.545 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1000.00 USD
+2025-03-28 14:54:36.545 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:54:36.545 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 100.00 USD
+2025-03-28 14:54:36.545 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 980.00 USD. Лимит превышен: false
+2025-03-28 14:54:36.545 [main] INFO  c.a.b.service.TransactionService - Транзакция 4f5340cd-b2b8-4364-8a01-3492ccafa261 сохранена с флагом limitExceeded=false
+2025-03-28 14:54:36.553 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:54:36.553 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:54:36.554 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 14:54:36.554 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 14:54:36.554 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 14:54:36.554 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:54:36.555 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 500.00 USD
+2025-03-28 14:54:36.555 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1600.00 USD. Лимит превышен: true
+2025-03-28 14:54:36.556 [main] INFO  c.a.b.service.TransactionService - Транзакция d0cb689c-0786-4d07-805a-5345ddaf9661 сохранена с флагом limitExceeded=true
+2025-03-28 14:54:36.563 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:54:36.564 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:54:36.565 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 14:54:36.565 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 14:54:36.565 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1000.00 USD
+2025-03-28 14:54:36.565 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:54:36.566 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 0.00 USD
+2025-03-28 14:54:36.566 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1100.00 USD. Лимит превышен: true
+2025-03-28 14:54:36.567 [main] INFO  c.a.b.service.TransactionService - Транзакция 4880b263-e866-4ae9-b6fc-0335da3503ee сохранена с флагом limitExceeded=true
+2025-03-28 14:54:36.574 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 14:54:36.574 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 14:54:36.575 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 14:54:36.575 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 14:54:36.576 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 14:54:36.576 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 14:54:36.576 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 150.00 USD
+2025-03-28 14:54:36.577 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1250.00 USD. Лимит превышен: false
+2025-03-28 14:54:36.577 [main] INFO  c.a.b.service.TransactionService - Транзакция c70fc8a0-2337-42a3-b858-2d92b1129125 сохранена с флагом limitExceeded=false
+2025-03-28 14:54:38.740 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-28 14:54:38.742 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-03-28 14:54:38.746 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-03-28 15:09:18.796 [main] INFO  c.a.b.BankOperationApplicationTests - Starting BankOperationApplicationTests using Java 21.0.1 with PID 8256 (started by danil in E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation)
+2025-03-28 15:09:18.797 [main] DEBUG c.a.b.BankOperationApplicationTests - Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-03-28 15:09:18.799 [main] INFO  c.a.b.BankOperationApplicationTests - The following 1 profile is active: "dev"
+2025-03-28 15:09:19.993 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 15:09:20.000 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Reactive Cassandra repositories in DEFAULT mode.
+2025-03-28 15:09:20.202 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExpenseLimitRepository; If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository
+2025-03-28 15:09:20.206 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.TransactionRepository; If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository
+2025-03-28 15:09:20.207 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 191 ms. Found 0 Reactive Cassandra repository interfaces.
+2025-03-28 15:09:20.217 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 15:09:20.217 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Cassandra repositories in DEFAULT mode.
+2025-03-28 15:09:20.226 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExpenseLimitRepository; If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository
+2025-03-28 15:09:20.227 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.TransactionRepository; If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository
+2025-03-28 15:09:20.252 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 33 ms. Found 1 Cassandra repository interface.
+2025-03-28 15:09:20.266 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 15:09:20.268 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-28 15:09:20.284 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExchangeRateRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2025-03-28 15:09:20.298 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 23 ms. Found 2 JPA repository interfaces.
+2025-03-28 15:09:21.028 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-03-28 15:09:21.291 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7aef21bb
+2025-03-28 15:09:21.294 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-03-28 15:09:21.530 [main] INFO  liquibase.database - Set default schema name to public
+2025-03-28 15:09:22.134 [main] INFO  liquibase.changelog - Creating database history table with name: public.databasechangelog
+2025-03-28 15:09:22.175 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2025-03-28 15:09:22.281 [main] INFO  liquibase.lockservice - Successfully acquired change log lock
+2025-03-28 15:09:22.283 [main] INFO  liquibase.command - Using deploymentId: 3156562283
+2025-03-28 15:09:22.287 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2025-03-28 15:09:22.322 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::create-transactions-table::expense-tracker
+2025-03-28 15:09:22.344 [main] INFO  liquibase.changelog - Table transactions created
+2025-03-28 15:09:22.347 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::create-transactions-table::expense-tracker ran successfully in 23ms
+2025-03-28 15:09:22.356 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::create-expense-limits-table::expense-tracker
+2025-03-28 15:09:22.363 [main] INFO  liquibase.changelog - Table expense_limits created
+2025-03-28 15:09:22.365 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::create-expense-limits-table::expense-tracker ran successfully in 9ms
+2025-03-28 15:09:22.369 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::alter-transactions-datetime-to-timestamptz::your-github-username
+2025-03-28 15:09:22.376 [main] INFO  liquibase.changelog - transactions.datetime datatype was changed to timestamp with time zone
+2025-03-28 15:09:22.377 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::alter-transactions-datetime-to-timestamptz::your-github-username ran successfully in 7ms
+2025-03-28 15:09:22.381 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::alter-limits-datetime-to-timestamptz::your-github-username
+2025-03-28 15:09:22.384 [main] INFO  liquibase.changelog - expense_limits.limit_datetime datatype was changed to timestamp with time zone
+2025-03-28 15:09:22.386 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::alter-limits-datetime-to-timestamptz::your-github-username ran successfully in 5ms
+2025-03-28 15:09:22.395 [main] INFO  liquibase.util - UPDATE SUMMARY
+2025-03-28 15:09:22.395 [main] INFO  liquibase.util - Run:                          4
+2025-03-28 15:09:22.395 [main] INFO  liquibase.util - Previously run:               0
+2025-03-28 15:09:22.396 [main] INFO  liquibase.util - Filtered out:                 0
+2025-03-28 15:09:22.396 [main] INFO  liquibase.util - -------------------------------
+2025-03-28 15:09:22.396 [main] INFO  liquibase.util - Total change sets:            4
+2025-03-28 15:09:22.397 [main] INFO  liquibase.util - Update summary generated
+2025-03-28 15:09:22.399 [main] INFO  liquibase.command - Update command completed successfully.
+2025-03-28 15:09:22.399 [main] INFO  liquibase.ui - Liquibase: Update has been successful. Rows affected: 4
+2025-03-28 15:09:22.403 [main] INFO  liquibase.lockservice - Successfully released change log lock
+2025-03-28 15:09:22.405 [main] INFO  liquibase.command - Command execution complete
+2025-03-28 15:09:23.026 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-28 15:09:23.091 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-28 15:09:24.176 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-28 15:09:24.341 [main] INFO  c.d.o.d.i.c.DefaultMavenCoordinates - Apache Cassandra Java Driver (org.apache.cassandra:java-driver-core) version 4.18.1
+2025-03-28 15:09:24.995 [main] INFO  c.d.o.d.internal.core.ContactPoints - Contact point localhost:59917 resolves to multiple addresses, will use them all ([localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1])
+2025-03-28 15:09:25.150 [main] INFO  c.d.o.d.i.c.c.CqlPrepareAsyncProcessor - Adding handler to invalidate cached prepared statements on type changes
+2025-03-28 15:09:25.406 [s0-admin-0] INFO  c.d.o.d.internal.core.time.Clock - Using native clock for microsecond precision
+2025-03-28 15:09:25.664 [s0-admin-0] WARN  c.d.o.d.i.c.l.h.OptionalLocalDcHelper - [s0|default] You specified datacenter1 as the local DC, but some contact points are from a different DC: Node(endPoint=localhost/[0:0:0:0:0:0:0:1]:59917, hostId=null, hashCode=31a7ca75)=null; please provide the correct local DC, or check your contact points
+2025-03-28 15:09:27.187 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Начало обновления курсов валют для 3 пар
+2025-03-28 15:09:27.188 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: EUR/USD
+2025-03-28 15:09:27.188 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 15:09:27.542 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: RUB/USD
+2025-03-28 15:09:27.542 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для RUB -> USD
+2025-03-28 15:09:27.543 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: KZT/RUB
+2025-03-28 15:09:27.543 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для KZT -> RUB
+2025-03-28 15:09:27.544 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Завершено обновление курсов валют
+2025-03-28 15:09:27.843 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-28 15:09:28.858 [reactor-http-nio-4] WARN  c.a.b.c.TwelveDataExchangeRateClient - API Twelve Data не вернуло данных (или вернуло null) для KZT -> RUB. Попытка использовать fallback.
+2025-03-28 15:09:28.858 [reactor-http-nio-3] WARN  c.a.b.c.TwelveDataExchangeRateClient - API Twelve Data не вернуло данных (или вернуло null) для RUB -> USD. Попытка использовать fallback.
+2025-03-28 15:09:29.033 [reactor-http-nio-3] ERROR c.a.b.c.TwelveDataExchangeRateClient - Fallback невозможен: Нет доступных данных о курсе для RUB -> USD
+2025-03-28 15:09:29.036 [reactor-http-nio-4] ERROR c.a.b.c.TwelveDataExchangeRateClient - Fallback невозможен: Нет доступных данных о курсе для KZT -> RUB
+2025-03-28 15:09:29.589 [reactor-http-nio-2] WARN  c.a.b.c.TwelveDataExchangeRateClient - API Twelve Data не вернуло данных (или вернуло null) для EUR -> USD. Попытка использовать fallback.
+2025-03-28 15:09:29.612 [reactor-http-nio-2] ERROR c.a.b.c.TwelveDataExchangeRateClient - Fallback невозможен: Нет доступных данных о курсе для EUR -> USD
+2025-03-28 15:09:29.729 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-28 15:09:30.229 [main] INFO  c.a.b.BankOperationApplicationTests - Started BankOperationApplicationTests in 12.106 seconds (process running for 29.922)
+2025-03-28 15:09:32.522 [s0-admin-1] WARN  c.d.o.d.i.core.pool.ChannelPool - [s0|localhost/127.0.0.1:59917]  Error while opening new channel (ConnectionInitException: [s0|connecting...] Protocol initialization request, step 1 (STARTUP {CQL_VERSION=3.0.0, DRIVER_NAME=Apache Cassandra Java Driver, DRIVER_VERSION=4.18.1, CLIENT_ID=0c3bb34a-51cc-4d1c-b244-37b060c24674}): failed to send request (io.netty.channel.StacklessClosedChannelException))
+2025-03-28 15:09:32.697 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Начало обновления курсов валют для 2 пар
+2025-03-28 15:09:32.698 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: EUR/USD
+2025-03-28 15:09:32.713 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: RUB/USD
+2025-03-28 15:09:32.713 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Завершено обновление курсов валют
+2025-03-28 15:09:32.757 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 15:09:32.819 [main] ERROR c.a.b.c.TwelveDataExchangeRateClient - Ошибка при получении курса: API connection failed
+2025-03-28 15:09:32.829 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 15:09:32.832 [main] WARN  c.a.b.c.TwelveDataExchangeRateClient - API Twelve Data не вернуло данных (или вернуло null) для EUR -> USD. Попытка использовать fallback.
+2025-03-28 15:09:32.833 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Использован fallback курс для EUR -> USD: 1.09
+2025-03-28 15:09:32.846 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 15:09:32.846 [main] WARN  c.a.b.c.TwelveDataExchangeRateClient - API Twelve Data не вернуло данных (или вернуло null) для EUR -> USD. Попытка использовать fallback.
+2025-03-28 15:09:32.847 [main] ERROR c.a.b.c.TwelveDataExchangeRateClient - Fallback невозможен: Нет доступных данных о курсе для EUR -> USD
+2025-03-28 15:09:32.857 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 15:09:32.859 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Получен курс от API для EUR -> USD: закрытие=1.12, предыдущее закрытие=1.11
+2025-03-28 15:09:32.869 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 15:09:32.870 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Получен курс от API для EUR -> USD: закрытие=1.12, предыдущее закрытие=1.12
+2025-03-28 15:09:33.015 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 15:09:33.015 [main] WARN  c.a.b.service.ExchangeRateService - Курс для EUR/USD не найден на дату 2025-03-28. Используется последний доступный курс от 2025-03-27
+2025-03-28 15:09:33.015 [main] DEBUG c.a.b.service.ExchangeRateService - Найден прямой курс EUR/USD на 2025-03-28: 1.09
+2025-03-28 15:09:33.141 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 15:09:33.141 [main] WARN  c.a.b.service.ExchangeRateService - Прямой курс EUR/USD на 2025-03-28 не найден в базе.
+2025-03-28 15:09:33.142 [main] ERROR c.a.b.service.ExchangeRateService - Не удалось найти или вычислить курс для EUR/USD на 2025-03-28
+2025-03-28 15:09:33.161 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 15:09:33.162 [main] DEBUG c.a.b.service.ExchangeRateService - Найден прямой курс EUR/USD на 2025-03-28: 1.10
+2025-03-28 15:09:33.168 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары JPY -> EUR на дату 2025-03-28
+2025-03-28 15:09:33.169 [main] WARN  c.a.b.service.ExchangeRateService - Прямой курс JPY/EUR на 2025-03-28 не найден в базе.
+2025-03-28 15:09:33.169 [main] ERROR c.a.b.service.ExchangeRateService - Не удалось найти или вычислить курс для JPY/EUR на 2025-03-28
+2025-03-28 15:09:33.176 [main] INFO  c.a.b.service.ExchangeRateService - Курс для EUR -> USD на дату 2025-03-28 уже существует
+2025-03-28 15:09:33.184 [main] INFO  c.a.b.service.ExchangeRateService - Сохранен курс валют: валютная пара EUR -> USD, курс: 1.10
+2025-03-28 15:09:33.196 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары KZT -> USD на дату 2025-03-28
+2025-03-28 15:09:33.197 [main] WARN  c.a.b.service.ExchangeRateService - Прямой курс KZT/USD на 2025-03-28 не найден в базе.
+2025-03-28 15:09:33.197 [main] INFO  c.a.b.service.ExchangeRateService - Пытаемся вычислить кросс-курс KZT/USD через KZT/RUB и RUB/USD на дату 2025-03-28
+2025-03-28 15:09:33.198 [main] ERROR c.a.b.service.ExchangeRateService - Невозможно вычислить кросс-курс KZT/USD на 2025-03-28: отсутствуют промежуточные курсы:KZT/RUB.
+2025-03-28 15:09:33.402 [main] DEBUG c.a.b.service.LimitService - Установка нового лимита 1500.00 для категории SERVICE
+2025-03-28 15:09:33.402 [main] DEBUG c.a.b.service.LimitService - DTO лимита смаплен в сущность: ExpenseLimit(id=null, limitSum=1500.00, limitDateTime=2025-03-28T15:09:33.401175500+05:00[Asia/Yekaterinburg], limitCurrencyShortname=USD, expenseCategory=SERVICE)
+2025-03-28 15:09:33.408 [main] INFO  c.a.b.service.LimitService - Новый лимит 1500.00 для категории SERVICE сохранен с ID 48dbe835-5f73-487f-91d4-f71442fae883
+2025-03-28 15:09:33.607 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 15:09:33.608 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=USD, sum=300.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 15:09:33.614 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 300.00
+2025-03-28 15:09:33.615 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 15:09:33.616 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 15:09:33.616 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 1000.00 USD
+2025-03-28 15:09:33.616 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1300.00 USD. Лимит превышен: false
+2025-03-28 15:09:33.617 [main] INFO  c.a.b.service.TransactionService - Транзакция 01a9f8c2-ea46-424a-8a4a-2383ac183311 сохранена с флагом limitExceeded=false
+2025-03-28 15:09:33.631 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 15:09:33.631 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 15:09:33.632 [main] ERROR c.a.b.service.TransactionService - Не удалось получить курс для RUB/USD на 2024-03-15: Курс RUB не найден
+2025-03-28 15:09:33.639 [main] INFO  c.a.b.service.TransactionService - Запрос транзакций, превысивших лимиты, с деталями их лимитов.
+2025-03-28 15:09:33.641 [main] INFO  c.a.b.service.TransactionService - Найдено 1 транзакций, превысивших лимиты.
+2025-03-28 15:09:33.662 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 15:09:33.663 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=80000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 15:09:33.664 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 80000.00 RUB -> 880.00 USD
+2025-03-28 15:09:33.664 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 880.00
+2025-03-28 15:09:33.664 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1000.00 USD
+2025-03-28 15:09:33.664 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 15:09:33.665 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 100.00 USD
+2025-03-28 15:09:33.665 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 980.00 USD. Лимит превышен: false
+2025-03-28 15:09:33.666 [main] INFO  c.a.b.service.TransactionService - Транзакция 917d3492-4bd4-4a44-adda-b0b69efb837c сохранена с флагом limitExceeded=false
+2025-03-28 15:09:33.676 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 15:09:33.677 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 15:09:33.677 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 15:09:33.677 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 15:09:33.678 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 15:09:33.678 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 15:09:33.678 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 500.00 USD
+2025-03-28 15:09:33.678 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1600.00 USD. Лимит превышен: true
+2025-03-28 15:09:33.678 [main] INFO  c.a.b.service.TransactionService - Транзакция a4fd0ecd-662a-491a-9f4d-86b6264cad3c сохранена с флагом limitExceeded=true
+2025-03-28 15:09:33.688 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 15:09:33.688 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 15:09:33.688 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 15:09:33.689 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 15:09:33.689 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1000.00 USD
+2025-03-28 15:09:33.689 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 15:09:33.689 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 0.00 USD
+2025-03-28 15:09:33.689 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1100.00 USD. Лимит превышен: true
+2025-03-28 15:09:33.690 [main] INFO  c.a.b.service.TransactionService - Транзакция 440407e2-3874-46e9-9b63-20c3f10f59dc сохранена с флагом limitExceeded=true
+2025-03-28 15:09:33.699 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 15:09:33.699 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 15:09:33.700 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 15:09:33.700 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 15:09:33.701 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 15:09:33.701 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 15:09:33.701 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 150.00 USD
+2025-03-28 15:09:33.701 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1250.00 USD. Лимит превышен: false
+2025-03-28 15:09:33.702 [main] INFO  c.a.b.service.TransactionService - Транзакция fb6adeca-f781-42b0-8c1c-01979aafc19c сохранена с флагом limitExceeded=false
+2025-03-28 15:09:35.873 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-28 15:09:35.875 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-03-28 15:09:35.882 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

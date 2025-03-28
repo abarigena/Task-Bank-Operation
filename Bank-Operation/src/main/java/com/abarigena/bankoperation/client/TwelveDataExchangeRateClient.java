@@ -17,6 +17,7 @@ import reactor.core.publisher.Mono;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Component
@@ -73,15 +74,23 @@ public class TwelveDataExchangeRateClient {
                 .retrieve()
                 .bodyToMono(TwelveDataExchangeRateDTO.class)
                 .flatMap(dto -> {
-                    if (dto.getValues().isEmpty() || dto.getValues().get(0).getClose() == null) {
-                        // Если данных от API нет, используем последний доступный курс
+                    if (dto == null || dto.getValues() == null || dto.getValues().isEmpty()) {
+                        log.warn("API Twelve Data не вернуло данных (или вернуло null) для {} -> {}. Попытка использовать fallback.", fromCurrency, toCurrency);
+                        // Если данных от API нет, используем последний доступный курс (fallback)
                         try {
-                            BigDecimal lastClosePrice = exchangeRateService.getExchangeRate(
+                            // Используем findRateOptional, который включает fallback
+                            Optional<BigDecimal> lastClosePriceOpt = exchangeRateService.findRateOptional(
                                     fromCurrency,
                                     toCurrency,
-                                    LocalDate.now()
+                                    LocalDate.now() // Ищем на сегодня
                             );
 
+                            if (lastClosePriceOpt.isEmpty()) {
+                                log.error("Fallback невозможен: Нет доступных данных о курсе для {} -> {}", fromCurrency, toCurrency);
+                                return Mono.empty(); // Если и fallback не дал результата
+                            }
+
+                            BigDecimal lastClosePrice = lastClosePriceOpt.get();
                             ExchangeRate fallbackRate = new ExchangeRate(
                                     fromCurrency,
                                     toCurrency,
@@ -90,30 +99,31 @@ public class TwelveDataExchangeRateClient {
                                     lastClosePrice,
                                     lastClosePrice
                             );
+                            log.info("Использован fallback курс для {} -> {}: {}", fromCurrency, toCurrency, lastClosePrice);
+                            return Mono.just(fallbackRate); // Возвращаем fallback
 
-                            log.warn("API не вернуло данные. Использован последний доступный курс.");
-                            return Mono.just(fallbackRate);
-                        } catch (IllegalArgumentException ex) {
-                            log.error("Нет доступных данных о курсе для {} -> {}", fromCurrency, toCurrency);
+                        } catch (Exception ex) { // Ловим любые исключения при поиске fallback
+                            log.error("Ошибка при поиске fallback курса для {} -> {}: {}", fromCurrency, toCurrency, ex.getMessage());
                             return Mono.empty();
                         }
                     }
 
+                    // --- Если данные от API есть
                     TwelveDataExchangeRateDTO.Value value = dto.getValues().get(0);
+                    // Добавим проверку на null и для самого close
+                    if (value.getClose() == null) {
+                        log.error("API Twelve Data вернуло запись, но поле 'close' равно null для {} -> {}. Обработка невозможна.", fromCurrency, toCurrency);
+                        return Mono.empty(); // Или можно попытаться использовать fallback здесь тоже
+                    }
                     BigDecimal closePrice = new BigDecimal(value.getClose());
 
-                    // Пытаемся получить предыдущий курс для previousClosePrice
-                    BigDecimal previousClosePrice;
-                    try {
-                        previousClosePrice = exchangeRateService.getExchangeRate(
-                                fromCurrency,
-                                toCurrency,
-                                LocalDate.now().minusDays(1)
-                        );
-                    } catch (IllegalArgumentException ex) {
-                        // Если нет предыдущего курса, используем текущий
-                        previousClosePrice = closePrice;
-                    }
+                    // Получаем предыдущий курс для previousClosePrice, используя findRateOptional
+                    BigDecimal previousClosePrice = exchangeRateService.findRateOptional(
+                                    fromCurrency,
+                                    toCurrency,
+                                    LocalDate.now().minusDays(1)
+                            )
+                            .orElse(closePrice); // Если не найден, используем текущий
 
                     ExchangeRate rate = new ExchangeRate(
                             fromCurrency,
@@ -124,7 +134,7 @@ public class TwelveDataExchangeRateClient {
                             previousClosePrice
                     );
 
-                    log.info("Получен курс для {} -> {}: закрытие={}, предыдущее закрытие={}",
+                    log.info("Получен курс от API для {} -> {}: закрытие={}, предыдущее закрытие={}",
                             fromCurrency, toCurrency, rate.getClosePrice(), rate.getPreviousClosePrice());
 
                     return Mono.just(rate);

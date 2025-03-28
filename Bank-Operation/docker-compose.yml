@@ -6,7 +6,7 @@ services:
     container_name: bank-op-postgres
     environment:
       POSTGRES_DB: bank_operation
-      POSTGRES_USER: postgres
+      POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -76,7 +76,7 @@ services:
         condition: service_healthy # Ждем, пока healthcheck Cassandra не станет успешным
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/bank_operation
-      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
       SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
       SPRING_CASSANDRA_CONTACTPOINTS: cassandra-db
       SPRING_CASSANDRA_PORT: 9042
