@@ -2,6 +2,8 @@ package com.abarigena.bankoperation.controller;
 
 import com.abarigena.bankoperation.dto.ExchangeRateDTO;
 import com.abarigena.bankoperation.service.ExchangeRateService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,8 +18,9 @@ import java.util.List;
  * Контроллер для получения информации о курсах валют.
  */
 @RestController
-@RequestMapping("/api/rates") // Используем префикс /api/rates
+@RequestMapping("/api/rates")
 @RequiredArgsConstructor
+@Tag(name = "Exchange Rates", description = "API для получения курсов обмена валют")
 public class ExchangeRateController {
 
     private static final Logger log = LoggerFactory.getLogger(ExchangeRateController.class);
@@ -29,6 +32,8 @@ public class ExchangeRateController {
      *
      * @return ResponseEntity со списком ExchangeRateDTO или пустой список.
      */
+    @Operation(summary = "Получить курсы валют на сегодня",
+            description = "Возвращает список всех доступных курсов обмена, актуальных на текущий день.")
     @GetMapping("/today")
     public ResponseEntity<List<ExchangeRateDTO>> getTodaysRates() {
         log.info("Получен запрос на получение сегодняшних курсов валют.");
