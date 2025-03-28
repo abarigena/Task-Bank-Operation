@@ -1189,3 +1189,166 @@ Caused by: com.datastax.oss.driver.api.core.DriverTimeoutException: Query timed 
 2025-03-28 15:09:35.873 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-03-28 15:09:35.875 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2025-03-28 15:09:35.882 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-03-28 15:34:32.643 [main] INFO  c.a.b.BankOperationApplicationTests - Starting BankOperationApplicationTests using Java 21.0.1 with PID 2872 (started by danil in E:\Работа\Тестовое в IDF Lab\Task-Bank-Operation\Bank-Operation)
+2025-03-28 15:34:32.644 [main] DEBUG c.a.b.BankOperationApplicationTests - Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-03-28 15:34:32.644 [main] INFO  c.a.b.BankOperationApplicationTests - The following 1 profile is active: "dev"
+2025-03-28 15:34:33.736 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 15:34:33.739 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Reactive Cassandra repositories in DEFAULT mode.
+2025-03-28 15:34:33.898 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExpenseLimitRepository; If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository
+2025-03-28 15:34:33.903 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Reactive Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.TransactionRepository; If you want this repository to be a Reactive Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.ReactiveCassandraRepository
+2025-03-28 15:34:33.904 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 155 ms. Found 0 Reactive Cassandra repository interfaces.
+2025-03-28 15:34:33.914 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 15:34:33.915 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Cassandra repositories in DEFAULT mode.
+2025-03-28 15:34:33.923 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExpenseLimitRepository; If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository
+2025-03-28 15:34:33.923 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Cassandra - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.TransactionRepository; If you want this repository to be a Cassandra repository, consider annotating your entities with one of these annotations: org.springframework.data.cassandra.core.mapping.Table (preferred), or consider extending one of the following types with your repository: org.springframework.data.cassandra.repository.CassandraRepository
+2025-03-28 15:34:33.961 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 44 ms. Found 1 Cassandra repository interface.
+2025-03-28 15:34:33.979 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-03-28 15:34:33.981 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-28 15:34:33.996 [main] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.abarigena.bankoperation.store.repository.ExchangeRateRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2025-03-28 15:34:34.008 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 20 ms. Found 2 JPA repository interfaces.
+2025-03-28 15:34:34.717 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-03-28 15:34:35.009 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6f36e806
+2025-03-28 15:34:35.011 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-03-28 15:34:35.249 [main] INFO  liquibase.database - Set default schema name to public
+2025-03-28 15:34:35.863 [main] INFO  liquibase.changelog - Creating database history table with name: public.databasechangelog
+2025-03-28 15:34:35.915 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2025-03-28 15:34:36.026 [main] INFO  liquibase.lockservice - Successfully acquired change log lock
+2025-03-28 15:34:36.028 [main] INFO  liquibase.command - Using deploymentId: 3158076028
+2025-03-28 15:34:36.032 [main] INFO  liquibase.changelog - Reading from public.databasechangelog
+2025-03-28 15:34:36.062 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::create-transactions-table::expense-tracker
+2025-03-28 15:34:36.076 [main] INFO  liquibase.changelog - Table transactions created
+2025-03-28 15:34:36.079 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::create-transactions-table::expense-tracker ran successfully in 15ms
+2025-03-28 15:34:36.090 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::create-expense-limits-table::expense-tracker
+2025-03-28 15:34:36.095 [main] INFO  liquibase.changelog - Table expense_limits created
+2025-03-28 15:34:36.097 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::create-expense-limits-table::expense-tracker ran successfully in 7ms
+2025-03-28 15:34:36.103 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::alter-transactions-datetime-to-timestamptz::your-github-username
+2025-03-28 15:34:36.109 [main] INFO  liquibase.changelog - transactions.datetime datatype was changed to timestamp with time zone
+2025-03-28 15:34:36.110 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::alter-transactions-datetime-to-timestamptz::your-github-username ran successfully in 7ms
+2025-03-28 15:34:36.115 [main] INFO  liquibase.ui - Running Changeset: db/changelog/changelog-master.xml::alter-limits-datetime-to-timestamptz::your-github-username
+2025-03-28 15:34:36.118 [main] INFO  liquibase.changelog - expense_limits.limit_datetime datatype was changed to timestamp with time zone
+2025-03-28 15:34:36.119 [main] INFO  liquibase.changelog - ChangeSet db/changelog/changelog-master.xml::alter-limits-datetime-to-timestamptz::your-github-username ran successfully in 4ms
+2025-03-28 15:34:36.128 [main] INFO  liquibase.util - UPDATE SUMMARY
+2025-03-28 15:34:36.128 [main] INFO  liquibase.util - Run:                          4
+2025-03-28 15:34:36.128 [main] INFO  liquibase.util - Previously run:               0
+2025-03-28 15:34:36.128 [main] INFO  liquibase.util - Filtered out:                 0
+2025-03-28 15:34:36.128 [main] INFO  liquibase.util - -------------------------------
+2025-03-28 15:34:36.128 [main] INFO  liquibase.util - Total change sets:            4
+2025-03-28 15:34:36.129 [main] INFO  liquibase.util - Update summary generated
+2025-03-28 15:34:36.133 [main] INFO  liquibase.command - Update command completed successfully.
+2025-03-28 15:34:36.133 [main] INFO  liquibase.ui - Liquibase: Update has been successful. Rows affected: 4
+2025-03-28 15:34:36.137 [main] INFO  liquibase.lockservice - Successfully released change log lock
+2025-03-28 15:34:36.140 [main] INFO  liquibase.command - Command execution complete
+2025-03-28 15:34:36.769 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-28 15:34:36.846 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-03-28 15:34:37.901 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-28 15:34:38.101 [main] INFO  c.d.o.d.i.c.DefaultMavenCoordinates - Apache Cassandra Java Driver (org.apache.cassandra:java-driver-core) version 4.18.1
+2025-03-28 15:34:38.704 [main] INFO  c.d.o.d.internal.core.ContactPoints - Contact point localhost:60343 resolves to multiple addresses, will use them all ([localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1])
+2025-03-28 15:34:38.833 [main] INFO  c.d.o.d.i.c.c.CqlPrepareAsyncProcessor - Adding handler to invalidate cached prepared statements on type changes
+2025-03-28 15:34:39.077 [s0-admin-0] INFO  c.d.o.d.internal.core.time.Clock - Using native clock for microsecond precision
+2025-03-28 15:34:39.317 [s0-admin-0] WARN  c.d.o.d.i.c.l.h.OptionalLocalDcHelper - [s0|default] You specified datacenter1 as the local DC, but some contact points are from a different DC: Node(endPoint=localhost/[0:0:0:0:0:0:0:1]:60343, hostId=null, hashCode=4a11d341)=null; please provide the correct local DC, or check your contact points
+2025-03-28 15:34:40.849 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Начало обновления курсов валют для 3 пар
+2025-03-28 15:34:40.850 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: EUR/USD
+2025-03-28 15:34:40.850 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 15:34:41.186 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: RUB/USD
+2025-03-28 15:34:41.186 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для RUB -> USD
+2025-03-28 15:34:41.187 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: KZT/RUB
+2025-03-28 15:34:41.187 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для KZT -> RUB
+2025-03-28 15:34:41.188 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Завершено обновление курсов валют
+2025-03-28 15:34:41.522 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-28 15:34:42.388 [reactor-http-nio-4] WARN  c.a.b.c.TwelveDataExchangeRateClient - API Twelve Data не вернуло данных (или вернуло null) для KZT -> RUB. Попытка использовать fallback.
+2025-03-28 15:34:42.388 [reactor-http-nio-2] WARN  c.a.b.c.TwelveDataExchangeRateClient - API Twelve Data не вернуло данных (или вернуло null) для EUR -> USD. Попытка использовать fallback.
+2025-03-28 15:34:42.388 [reactor-http-nio-3] WARN  c.a.b.c.TwelveDataExchangeRateClient - API Twelve Data не вернуло данных (или вернуло null) для RUB -> USD. Попытка использовать fallback.
+2025-03-28 15:34:42.505 [reactor-http-nio-2] ERROR c.a.b.c.TwelveDataExchangeRateClient - Fallback невозможен: Нет доступных данных о курсе для EUR -> USD
+2025-03-28 15:34:42.505 [reactor-http-nio-3] ERROR c.a.b.c.TwelveDataExchangeRateClient - Fallback невозможен: Нет доступных данных о курсе для RUB -> USD
+2025-03-28 15:34:42.505 [reactor-http-nio-4] ERROR c.a.b.c.TwelveDataExchangeRateClient - Fallback невозможен: Нет доступных данных о курсе для KZT -> RUB
+2025-03-28 15:34:43.389 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-28 15:34:43.846 [main] INFO  c.a.b.BankOperationApplicationTests - Started BankOperationApplicationTests in 11.777 seconds (process running for 28.608)
+2025-03-28 15:34:46.131 [s0-admin-1] WARN  c.d.o.d.i.core.pool.ChannelPool - [s0|localhost/127.0.0.1:60343]  Error while opening new channel (ConnectionInitException: [s0|connecting...] Protocol initialization request, step 1 (STARTUP {CQL_VERSION=3.0.0, DRIVER_NAME=Apache Cassandra Java Driver, DRIVER_VERSION=4.18.1, CLIENT_ID=75073233-1c87-44a7-aead-7caa3a827332}): failed to send request (io.netty.channel.StacklessClosedChannelException))
+2025-03-28 15:34:46.354 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Начало обновления курсов валют для 2 пар
+2025-03-28 15:34:46.354 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: EUR/USD
+2025-03-28 15:34:46.365 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Загрузка курса для валютной пары: RUB/USD
+2025-03-28 15:34:46.366 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Завершено обновление курсов валют
+2025-03-28 15:34:46.402 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 15:34:46.448 [main] ERROR c.a.b.c.TwelveDataExchangeRateClient - Ошибка при получении курса: API connection failed
+2025-03-28 15:34:46.457 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 15:34:46.461 [main] WARN  c.a.b.c.TwelveDataExchangeRateClient - API Twelve Data не вернуло данных (или вернуло null) для EUR -> USD. Попытка использовать fallback.
+2025-03-28 15:34:46.463 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Использован fallback курс для EUR -> USD: 1.09
+2025-03-28 15:34:46.474 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 15:34:46.475 [main] WARN  c.a.b.c.TwelveDataExchangeRateClient - API Twelve Data не вернуло данных (или вернуло null) для EUR -> USD. Попытка использовать fallback.
+2025-03-28 15:34:46.475 [main] ERROR c.a.b.c.TwelveDataExchangeRateClient - Fallback невозможен: Нет доступных данных о курсе для EUR -> USD
+2025-03-28 15:34:46.487 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 15:34:46.489 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Получен курс от API для EUR -> USD: закрытие=1.12, предыдущее закрытие=1.11
+2025-03-28 15:34:46.500 [main] DEBUG c.a.b.c.TwelveDataExchangeRateClient - Запрос курса для EUR -> USD
+2025-03-28 15:34:46.503 [main] INFO  c.a.b.c.TwelveDataExchangeRateClient - Получен курс от API для EUR -> USD: закрытие=1.12, предыдущее закрытие=1.12
+2025-03-28 15:34:46.644 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 15:34:46.644 [main] WARN  c.a.b.service.ExchangeRateService - Курс для EUR/USD не найден на дату 2025-03-28. Используется последний доступный курс от 2025-03-27
+2025-03-28 15:34:46.645 [main] DEBUG c.a.b.service.ExchangeRateService - Найден прямой курс EUR/USD на 2025-03-28: 1.09
+2025-03-28 15:34:46.770 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 15:34:46.771 [main] WARN  c.a.b.service.ExchangeRateService - Прямой курс EUR/USD на 2025-03-28 не найден в базе.
+2025-03-28 15:34:46.772 [main] ERROR c.a.b.service.ExchangeRateService - Не удалось найти или вычислить курс для EUR/USD на 2025-03-28
+2025-03-28 15:34:46.786 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары EUR -> USD на дату 2025-03-28
+2025-03-28 15:34:46.787 [main] DEBUG c.a.b.service.ExchangeRateService - Найден прямой курс EUR/USD на 2025-03-28: 1.10
+2025-03-28 15:34:46.793 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары JPY -> EUR на дату 2025-03-28
+2025-03-28 15:34:46.794 [main] WARN  c.a.b.service.ExchangeRateService - Прямой курс JPY/EUR на 2025-03-28 не найден в базе.
+2025-03-28 15:34:46.795 [main] ERROR c.a.b.service.ExchangeRateService - Не удалось найти или вычислить курс для JPY/EUR на 2025-03-28
+2025-03-28 15:34:46.802 [main] INFO  c.a.b.service.ExchangeRateService - Курс для EUR -> USD на дату 2025-03-28 уже существует
+2025-03-28 15:34:46.809 [main] INFO  c.a.b.service.ExchangeRateService - Сохранен курс валют: валютная пара EUR -> USD, курс: 1.10
+2025-03-28 15:34:46.818 [main] DEBUG c.a.b.service.ExchangeRateService - Запрос курса обмена для пары KZT -> USD на дату 2025-03-28
+2025-03-28 15:34:46.818 [main] WARN  c.a.b.service.ExchangeRateService - Прямой курс KZT/USD на 2025-03-28 не найден в базе.
+2025-03-28 15:34:46.819 [main] INFO  c.a.b.service.ExchangeRateService - Пытаемся вычислить кросс-курс KZT/USD через KZT/RUB и RUB/USD на дату 2025-03-28
+2025-03-28 15:34:46.820 [main] ERROR c.a.b.service.ExchangeRateService - Невозможно вычислить кросс-курс KZT/USD на 2025-03-28: отсутствуют промежуточные курсы:KZT/RUB.
+2025-03-28 15:34:46.989 [main] DEBUG c.a.b.service.LimitService - Установка нового лимита 1500.00 для категории SERVICE
+2025-03-28 15:34:46.989 [main] DEBUG c.a.b.service.LimitService - DTO лимита смаплен в сущность: ExpenseLimit(id=null, limitSum=1500.00, limitDateTime=2025-03-28T15:34:46.988270200+05:00[Asia/Yekaterinburg], limitCurrencyShortname=USD, expenseCategory=SERVICE)
+2025-03-28 15:34:46.994 [main] INFO  c.a.b.service.LimitService - Новый лимит 1500.00 для категории SERVICE сохранен с ID 4c188008-ece8-402d-85a6-34c3c6fe4bc5
+2025-03-28 15:34:47.172 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 15:34:47.173 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=USD, sum=300.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 15:34:47.178 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 300.00
+2025-03-28 15:34:47.179 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 15:34:47.180 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 15:34:47.180 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 1000.00 USD
+2025-03-28 15:34:47.180 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1300.00 USD. Лимит превышен: false
+2025-03-28 15:34:47.180 [main] INFO  c.a.b.service.TransactionService - Транзакция c6da4e50-140c-4d48-b246-40bb4fa4f5a4 сохранена с флагом limitExceeded=false
+2025-03-28 15:34:47.195 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 15:34:47.196 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 15:34:47.197 [main] ERROR c.a.b.service.TransactionService - Не удалось получить курс для RUB/USD на 2024-03-15: Курс RUB не найден
+2025-03-28 15:34:47.204 [main] INFO  c.a.b.service.TransactionService - Запрос транзакций, превысивших лимиты, с деталями их лимитов.
+2025-03-28 15:34:47.204 [main] INFO  c.a.b.service.TransactionService - Найдено 1 транзакций, превысивших лимиты.
+2025-03-28 15:34:47.229 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 15:34:47.230 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=80000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 15:34:47.230 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 80000.00 RUB -> 880.00 USD
+2025-03-28 15:34:47.230 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 880.00
+2025-03-28 15:34:47.231 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1000.00 USD
+2025-03-28 15:34:47.231 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 15:34:47.231 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 100.00 USD
+2025-03-28 15:34:47.231 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 980.00 USD. Лимит превышен: false
+2025-03-28 15:34:47.232 [main] INFO  c.a.b.service.TransactionService - Транзакция 1539125f-e49a-4536-8bb5-2374f0ede4c2 сохранена с флагом limitExceeded=false
+2025-03-28 15:34:47.239 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 15:34:47.239 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 15:34:47.241 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 15:34:47.241 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 15:34:47.241 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 15:34:47.241 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 15:34:47.242 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 500.00 USD
+2025-03-28 15:34:47.242 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1600.00 USD. Лимит превышен: true
+2025-03-28 15:34:47.242 [main] INFO  c.a.b.service.TransactionService - Транзакция c1d5f4c6-7df6-4eae-b559-48be5d5cc6a5 сохранена с флагом limitExceeded=true
+2025-03-28 15:34:47.251 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 15:34:47.251 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 15:34:47.252 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 15:34:47.252 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 15:34:47.252 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1000.00 USD
+2025-03-28 15:34:47.253 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 15:34:47.253 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 0.00 USD
+2025-03-28 15:34:47.253 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1100.00 USD. Лимит превышен: true
+2025-03-28 15:34:47.254 [main] INFO  c.a.b.service.TransactionService - Транзакция cb7048a5-088f-4523-84e1-de4d31fabea6 сохранена с флагом limitExceeded=true
+2025-03-28 15:34:47.263 [main] DEBUG c.a.b.service.TransactionService - Начало обработки транзакции для счета 123
+2025-03-28 15:34:47.263 [main] DEBUG c.a.b.service.TransactionService - Транзакция DTO смаплена в сущность: Transaction(id=null, accountFrom=123, accountTo=456, currencyShortname=RUB, sum=100000.00, sumInUsd=null, expenseCategory=PRODUCT, dateTime=2024-03-15T10:30+05:00[Asia/Yekaterinburg], limitExceeded=null)
+2025-03-28 15:34:47.264 [main] DEBUG c.a.b.service.TransactionService - Результат конвертации: 100000.00 RUB -> 1100.00 USD
+2025-03-28 15:34:47.264 [main] DEBUG c.a.b.service.TransactionService - Сумма в USD рассчитана: 1100.00
+2025-03-28 15:34:47.264 [main] DEBUG c.a.b.service.TransactionService - Действующий лимит на момент транзакции: 1500.00 USD
+2025-03-28 15:34:47.265 [main] DEBUG c.a.b.service.TransactionService - Расчет трат для категории PRODUCT за период с 2024-03-01T00:00+05:00[Asia/Yekaterinburg] по 2024-03-15T10:30+05:00[Asia/Yekaterinburg]
+2025-03-28 15:34:47.265 [main] DEBUG c.a.b.service.TransactionService - Потрачено в текущем месяце до этой транзакции: 150.00 USD
+2025-03-28 15:34:47.265 [main] DEBUG c.a.b.service.TransactionService - Общие траты с учетом текущей: 1250.00 USD. Лимит превышен: false
+2025-03-28 15:34:47.266 [main] INFO  c.a.b.service.TransactionService - Транзакция 145b4c02-2e42-49ec-a113-16da0380c103 сохранена с флагом limitExceeded=false
+2025-03-28 15:34:49.441 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-28 15:34:49.443 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-03-28 15:34:49.446 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

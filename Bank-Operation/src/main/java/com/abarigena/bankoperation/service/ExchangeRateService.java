@@ -1,5 +1,7 @@
 package com.abarigena.bankoperation.service;
 
+import com.abarigena.bankoperation.dto.ExchangeRateDTO;
+import com.abarigena.bankoperation.mapper.ExchangeRateMapper;
 import com.abarigena.bankoperation.store.entity.ExchangeRate;
 import com.abarigena.bankoperation.store.repository.ExchangeRateRepository;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -17,6 +20,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ExchangeRateService {
     private final ExchangeRateRepository exchangeRateRepository;
+    private final ExchangeRateMapper exchangeRateMapper;
 
 
     private static final Logger log = LoggerFactory.getLogger(ExchangeRateService.class);
@@ -176,5 +180,26 @@ public class ExchangeRateService {
             log.error("Ошибка при попытке кеширования вычисленного кросс-курса {}/{} на {}: {}",
                     fromCurrency, toCurrency, date, e.getMessage());
         }
+    }
+
+    /**
+     * Получает все доступные курсы обмена на сегодняшний день.
+     *
+     * @return Список DTO курсов обмена на сегодня.
+     */
+    public List<ExchangeRateDTO> getTodaysExchangeRates(){
+        LocalDate today = LocalDate.now();
+        log.info("Запрос всех курсов обмена на дату: {}", today);
+
+        List<ExchangeRate> ratesEntities = exchangeRateRepository.findAllByDate(today);
+
+        if (ratesEntities.isEmpty()) {
+            log.warn("Курсы на дату {} не найдены.", today);
+            return List.of();
+        }
+
+        log.info("Найдено {} курсов на дату {}", ratesEntities.size(), today);
+
+        return exchangeRateMapper.toDtoList(ratesEntities);
     }
 }

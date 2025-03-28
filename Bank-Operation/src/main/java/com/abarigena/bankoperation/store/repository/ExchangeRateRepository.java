@@ -3,8 +3,10 @@ package com.abarigena.bankoperation.store.repository;
 import com.abarigena.bankoperation.store.entity.ExchangeRate;
 import org.springframework.data.cassandra.repository.CassandraRepository;
 import org.springframework.data.cassandra.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -41,4 +43,13 @@ public interface ExchangeRateRepository extends CassandraRepository<ExchangeRate
      */
     @Query("SELECT * FROM exchange_rates WHERE from_currency = ?0 AND to_currency = ?1 AND date = ?2 LIMIT 1")
     Optional<ExchangeRate> findByFromCurrencyAndToCurrencyAndDate(String fromCurrency, String toCurrency, LocalDate date);
+
+    /**
+     * Находит все курсы, сохраненные на указанную дату.
+     *
+     * @param date Дата, на которую нужны курсы.
+     * @return Список курсов на указанную дату.
+     */
+    @Query("SELECT * FROM exchange_rates WHERE date = :rateDate ALLOW FILTERING")
+    List<ExchangeRate> findAllByDate(@Param("rateDate") LocalDate date);
 }
